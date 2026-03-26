@@ -84,9 +84,9 @@ Recommended AI tools:
 
 ## Usage
 
-Once generated:
+The NuGet package icon has been created and is located at `images/nuget_logo.png` (128x128 pixels).
 
-1. Save as `icon.png` at 128x128 pixels
-2. Add to the project root or `assets/` folder
-3. Reference in `.csproj` with `<PackageIcon>icon.png</PackageIcon>`
-4. Include in the NuGet package with `<None Include="icon.png" Pack="true" PackagePath="" />`
+**Configuration:**
+- The icon is referenced in `Directory.Build.props` with `<PackageIcon>nuget_logo.png</PackageIcon>`, making it available to all projects in the solution
+- The icon is included in the NuGet package via the CLI `.csproj` file using `<None Include="$(MSBuildThisFileDirectory)..\..\images\nuget_logo.png" Pack="true" PackagePath="" />`
+- The icon will appear on the NuGet.org package page and in search results

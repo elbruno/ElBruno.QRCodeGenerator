@@ -28,7 +28,7 @@ Update the version following [Semantic Versioning](https://semver.org):
 
 ### Step 2: Update CHANGELOG.md
 
-Add a new section at the top of the CHANGELOG.md at the repository root with the version and date:
+Add a new section at the top of the CHANGELOG.md in docs/ with the version and date:
 
 ```markdown
 ## [1.0.1] - 2026-03-27
@@ -46,6 +46,8 @@ dotnet pack -c Release
 This creates:
 - `src/ElBruno.QRCodeGenerator.CLI/bin/Release/ElBruno.QRCodeGenerator.CLI.1.0.1.nupkg`
 - `src/ElBruno.QRCodeGenerator.CLI/bin/Release/ElBruno.QRCodeGenerator.CLI.1.0.1.snupkg` (symbol package)
+
+The package includes the NuGet icon (`images/nuget_logo.png`), which is automatically configured in the project and included via the `.csproj` file.
 
 ## Publishing to NuGet
 
@@ -113,7 +115,6 @@ Response status code does not indicate success: 401 (Unauthorized).
 ### Package Validation Warnings
 
 NuGet may warn about:
-- Missing icon URL (optional)
 - Missing repository URL (add to `.csproj`)
 - Unsigned package (use code signing for production)
 

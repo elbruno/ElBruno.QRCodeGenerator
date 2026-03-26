@@ -22,5 +22,6 @@
     <Company>Bruno Capuano</Company>
     <Copyright>Copyright © Bruno Capuano $([System.DateTime]::Now.Year)</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageIcon>nuget_logo.png</PackageIcon>
   </PropertyGroup>
 </Project>
