@@ -162,3 +162,30 @@ ElBruno.QRCodeGenerator.CLI/
 **Convention Established:**
 - Future package structure: `src/{PackageName}/`, `src/tests/{PackageName}.Tests/`, `src/samples/{SampleName}/`
 - Repo root reserved for: solution file, README, LICENSE, CHANGELOG, docs/, .squad/, build configuration
+
+### 2026-03-27: CI and NuGet Publish Workflows Created
+
+**Problem:** Bruno created a GitHub release (v0.5.0) but nothing happened — no NuGet publish. The `.github/workflows/` folder only had Squad-related workflows, no CI or publish pipelines.
+
+**Workflows Created:**
+
+1. **`.github/workflows/build.yml`** — CI Build
+   - Triggers: push to main, PR to main
+   - Steps: checkout → setup-dotnet (8.0.x + global.json SDK) → restore → build → test (net8.0)
+   - Tests use `--framework net8.0` since test project targets net8.0 only
+
+2. **`.github/workflows/publish.yml`** — NuGet Publish
+   - Triggers: `release` event (type: published), push of `v*` tags
+   - Steps: checkout → setup-dotnet → restore → build Release → test → pack → push
+   - Only packs CLI project: `src/ElBruno.QRCodeGenerator.CLI/ElBruno.QRCodeGenerator.CLI.csproj`
+   - Pushes both .nupkg and .snupkg to NuGet.org
+   - Uses `secrets.NUGET_API_KEY` — must be configured in repo settings
+   - Uses `--skip-duplicate` to handle re-runs gracefully
+
+**Design Decisions:**
+- Both workflows install .NET 8.0.x SDK explicitly AND respect global.json (10.0.0) via `global-json-file: global.json`
+- Version comes from .csproj `<Version>` property — no tag parsing needed
+- The .csproj already has `<IncludeSymbols>true</IncludeSymbols>` and `<SymbolPackageFormat>snupkg</SymbolPackageFormat>`, so pack produces both packages
+- `<ContinuousIntegrationBuild>` is already conditioned on `GITHUB_ACTIONS` env var in .csproj — deterministic builds work automatically
+
+**Requirement for Bruno:** Add `NUGET_API_KEY` secret in GitHub repo settings (Settings → Secrets → Actions → New repository secret), then either re-run the v0.5.0 release workflow or create a new release/tag.
