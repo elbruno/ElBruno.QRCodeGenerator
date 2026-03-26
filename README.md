@@ -1,3 +1,6 @@
+[![CI Build](https://github.com/elbruno/ElBruno.QRCodeGenerator/actions/workflows/build.yml/badge.svg)](https://github.com/elbruno/ElBruno.QRCodeGenerator/actions/workflows/build.yml)
+[![Publish to NuGet](https://github.com/elbruno/ElBruno.QRCodeGenerator/actions/workflows/publish.yml/badge.svg)](https://github.com/elbruno/ElBruno.QRCodeGenerator/actions/workflows/publish.yml)
+
 # ElBruno.QRCodeGenerator
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/elbruno/ElBruno.QRCodeGenerator/blob/main/LICENSE)
