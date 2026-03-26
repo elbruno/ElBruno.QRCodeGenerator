@@ -1,0 +1,15 @@
+D:\elbruno\ElBruno.QRCodeGenerator\src\ElBruno.QRCodeGenerator.Svg\bin\Debug\net10.0\ElBruno.QRCodeGenerator.Svg.deps.json
+D:\elbruno\ElBruno.QRCodeGenerator\src\ElBruno.QRCodeGenerator.Svg\bin\Debug\net10.0\ElBruno.QRCodeGenerator.Svg.dll
+D:\elbruno\ElBruno.QRCodeGenerator\src\ElBruno.QRCodeGenerator.Svg\bin\Debug\net10.0\ElBruno.QRCodeGenerator.Svg.pdb
+D:\elbruno\ElBruno.QRCodeGenerator\src\ElBruno.QRCodeGenerator.Svg\bin\Debug\net10.0\ElBruno.QRCodeGenerator.Svg.xml
+D:\elbruno\ElBruno.QRCodeGenerator\src\ElBruno.QRCodeGenerator.Svg\obj\Debug\net10.0\ElBruno.QRCodeGenerator.Svg.csproj.AssemblyReference.cache
+D:\elbruno\ElBruno.QRCodeGenerator\src\ElBruno.QRCodeGenerator.Svg\obj\Debug\net10.0\ElBruno.QRCodeGenerator.Svg.GeneratedMSBuildEditorConfig.editorconfig
+D:\elbruno\ElBruno.QRCodeGenerator\src\ElBruno.QRCodeGenerator.Svg\obj\Debug\net10.0\ElBruno.QRCodeGenerator.Svg.AssemblyInfoInputs.cache
+D:\elbruno\ElBruno.QRCodeGenerator\src\ElBruno.QRCodeGenerator.Svg\obj\Debug\net10.0\ElBruno.QRCodeGenerator.Svg.AssemblyInfo.cs
+D:\elbruno\ElBruno.QRCodeGenerator\src\ElBruno.QRCodeGenerator.Svg\obj\Debug\net10.0\ElBruno.QRCodeGenerator.Svg.csproj.CoreCompileInputs.cache
+D:\elbruno\ElBruno.QRCodeGenerator\src\ElBruno.QRCodeGenerator.Svg\obj\Debug\net10.0\ElBruno.QRCodeGenerator.Svg.sourcelink.json
+D:\elbruno\ElBruno.QRCodeGenerator\src\ElBruno.QRCodeGenerator.Svg\obj\Debug\net10.0\ElBruno.QRCodeGenerator.Svg.dll
+D:\elbruno\ElBruno.QRCodeGenerator\src\ElBruno.QRCodeGenerator.Svg\obj\Debug\net10.0\refint\ElBruno.QRCodeGenerator.Svg.dll
+D:\elbruno\ElBruno.QRCodeGenerator\src\ElBruno.QRCodeGenerator.Svg\obj\Debug\net10.0\ElBruno.QRCodeGenerator.Svg.xml
+D:\elbruno\ElBruno.QRCodeGenerator\src\ElBruno.QRCodeGenerator.Svg\obj\Debug\net10.0\ElBruno.QRCodeGenerator.Svg.pdb
+D:\elbruno\ElBruno.QRCodeGenerator\src\ElBruno.QRCodeGenerator.Svg\obj\Debug\net10.0\ref\ElBruno.QRCodeGenerator.Svg.dll

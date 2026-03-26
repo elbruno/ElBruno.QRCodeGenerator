@@ -12,6 +12,8 @@ ElBruno.QRCodeGenerator is a suite of .NET libraries for generating QR codes in 
 | Package | NuGet | Downloads | Description |
 |---------|-------|-----------|-------------|
 | **ElBruno.QRCodeGenerator.CLI** | [![NuGet](https://img.shields.io/nuget/v/ElBruno.QRCodeGenerator.CLI)](https://www.nuget.org/packages/ElBruno.QRCodeGenerator.CLI) | [![Downloads](https://img.shields.io/nuget/dt/ElBruno.QRCodeGenerator.CLI)](https://www.nuget.org/packages/ElBruno.QRCodeGenerator.CLI) | Console QR codes with Unicode blocks |
+| **ElBruno.QRCodeGenerator.Payloads** | [![NuGet](https://img.shields.io/nuget/v/ElBruno.QRCodeGenerator.Payloads)](https://www.nuget.org/packages/ElBruno.QRCodeGenerator.Payloads) | [![Downloads](https://img.shields.io/nuget/dt/ElBruno.QRCodeGenerator.Payloads)](https://www.nuget.org/packages/ElBruno.QRCodeGenerator.Payloads) | Fluent payload builders (WiFi, vCard, SMS, Geo, Email, URL) |
+| **ElBruno.QRCodeGenerator.Svg** | [![NuGet](https://img.shields.io/nuget/v/ElBruno.QRCodeGenerator.Svg)](https://www.nuget.org/packages/ElBruno.QRCodeGenerator.Svg) | [![Downloads](https://img.shields.io/nuget/dt/ElBruno.QRCodeGenerator.Svg)](https://www.nuget.org/packages/ElBruno.QRCodeGenerator.Svg) | Resolution-independent SVG QR codes |
 
 ---
 
