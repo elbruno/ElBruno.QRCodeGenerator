@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\src\\ElBruno.QRCodeGenerator.CLI\\src\\ElBruno.QRCodeGenerator.CLI\\ElBruno.QRCodeGenerator.CLI.csproj": {}
+    "C:\\src\\ElBruno.QRCodeGenerator\\src\\ElBruno.QRCodeGenerator.CLI\\ElBruno.QRCodeGenerator.CLI.csproj": {}
   },
   "projects": {
-    "C:\\src\\ElBruno.QRCodeGenerator.CLI\\src\\ElBruno.QRCodeGenerator.CLI\\ElBruno.QRCodeGenerator.CLI.csproj": {
+    "C:\\src\\ElBruno.QRCodeGenerator\\src\\ElBruno.QRCodeGenerator.CLI\\ElBruno.QRCodeGenerator.CLI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\src\\ElBruno.QRCodeGenerator.CLI\\src\\ElBruno.QRCodeGenerator.CLI\\ElBruno.QRCodeGenerator.CLI.csproj",
+        "projectUniqueName": "C:\\src\\ElBruno.QRCodeGenerator\\src\\ElBruno.QRCodeGenerator.CLI\\ElBruno.QRCodeGenerator.CLI.csproj",
         "projectName": "ElBruno.QRCodeGenerator.CLI",
-        "projectPath": "C:\\src\\ElBruno.QRCodeGenerator.CLI\\src\\ElBruno.QRCodeGenerator.CLI\\ElBruno.QRCodeGenerator.CLI.csproj",
+        "projectPath": "C:\\src\\ElBruno.QRCodeGenerator\\src\\ElBruno.QRCodeGenerator.CLI\\ElBruno.QRCodeGenerator.CLI.csproj",
         "packagesPath": "C:\\Users\\bruno\\.nuget\\packages\\",
-        "outputPath": "C:\\src\\ElBruno.QRCodeGenerator.CLI\\src\\ElBruno.QRCodeGenerator.CLI\\obj\\",
+        "outputPath": "C:\\src\\ElBruno.QRCodeGenerator\\src\\ElBruno.QRCodeGenerator.CLI\\obj\\",
         "projectStyle": "PackageReference",
         "crossTargeting": true,
         "configFilePaths": [

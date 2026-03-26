@@ -154,19 +154,19 @@ Following ElBruno.LocalLLMs pattern:
 ElBruno.QRCodeGenerator.CLI/
 ├── .squad/                    # Squad metadata
 ├── src/
-│   └── ElBruno.QRCodeGenerator.CLI/
-│       ├── ElBruno.QRCodeGenerator.CLI.csproj
-│       ├── QRCode.cs          # Main public API
-│       ├── QRCodeOptions.cs   # Configuration
-│       └── Internal/          # Implementation details
-│           └── ConsoleRenderer.cs
-├── tests/
-│   └── ElBruno.QRCodeGenerator.CLI.Tests/
-│       └── ElBruno.QRCodeGenerator.CLI.Tests.csproj
-├── samples/
-│   └── BasicQRCode/
-│       ├── BasicQRCode.csproj
-│       └── Program.cs
+│   ├── ElBruno.QRCodeGenerator.CLI/
+│   │   ├── ElBruno.QRCodeGenerator.CLI.csproj
+│   │   ├── QRCode.cs          # Main public API
+│   │   ├── QRCodeOptions.cs   # Configuration
+│   │   └── Internal/          # Implementation details
+│   │       └── ConsoleRenderer.cs
+│   ├── tests/
+│   │   └── ElBruno.QRCodeGenerator.CLI.Tests/
+│   │       └── ElBruno.QRCodeGenerator.CLI.Tests.csproj
+│   └── samples/
+│       └── BasicQRCode/
+│           ├── BasicQRCode.csproj
+│           └── Program.cs
 ├── docs/
 │   └── README.md
 ├── Directory.Build.props      # Shared MSBuild properties

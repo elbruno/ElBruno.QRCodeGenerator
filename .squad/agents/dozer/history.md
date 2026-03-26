@@ -28,7 +28,7 @@
 - Exceptions thrown: `ArgumentNullException`, `ArgumentException` (text validation), wraps `DataTooLongException` from QRCoder
 
 ### Sample Code Strategy
-- Samples are self-contained console apps in `samples/` folder
+- Samples are self-contained console apps in `src/samples/` folder
 - Each sample demonstrates one distinct capability (e.g., BasicQRCode shows simple usage + options)
 - Samples should be runnable with `dotnet run` after `cd`
 
@@ -42,6 +42,6 @@
 - README.md and LICENSE at repo root (not in docs/)
 - CHANGELOG.md at repo root with dates and version sections, organized by package
 - docs/ folder contains guides (publishing.md, nuget-logo-prompt.md, etc.)
-- samples/ contains example applications
+- src/samples/ contains example applications
 
 

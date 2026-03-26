@@ -21,7 +21,7 @@
 - Start with the public API surface — what will consumers see?
 - Keep dependencies minimal. A library should be lightweight.
 - Follow the patterns established in ElBruno.LocalLLMs and ElBruno.LocalEmbeddings repos.
-- Ensure the project structure matches: src/, tests/, samples/, docs/ convention.
+- Ensure the project structure matches: src/ (with nested tests/, samples/), docs/ convention.
 - Project supports multiple QR code generation targets: CLI (console), Image (future), with potential Core library for shared logic.
 
 ## Boundaries

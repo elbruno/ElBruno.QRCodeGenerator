@@ -13,7 +13,7 @@
 
 - README.md (repo root)
 - docs/ folder (all documentation)
-- samples/ folder (all sample applications)
+- src/samples/ folder (all sample applications)
 - Publishing documentation (docs/publishing.md)
 - CHANGELOG.md
 

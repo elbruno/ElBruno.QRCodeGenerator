@@ -77,8 +77,8 @@
 ```
 ElBruno.QRCodeGenerator.CLI/
 ├── src/ElBruno.QRCodeGenerator.CLI/  # Main library
-├── tests/ElBruno.QRCodeGenerator.CLI.Tests/  # xUnit tests
-├── samples/BasicQRCode/  # Sample console app
+├── src/tests/ElBruno.QRCodeGenerator.CLI.Tests/  # xUnit tests
+├── src/samples/BasicQRCode/  # Sample console app
 ├── docs/  # Documentation
 ├── Directory.Build.props  # Shared MSBuild properties
 ├── global.json  # SDK 10.0.0 with rollForward

@@ -37,9 +37,9 @@
 - ConsoleRenderer tested indirectly (it's internal)
 
 **Key File Paths**:
-- `tests/ElBruno.QRCodeGenerator.CLI.Tests/QRCodeTests.cs`
-- `tests/ElBruno.QRCodeGenerator.CLI.Tests/QRCodeOptionsTests.cs`
-- `tests/ElBruno.QRCodeGenerator.CLI.Tests/ConsoleRendererTests.cs`
+- `src/tests/ElBruno.QRCodeGenerator.CLI.Tests/QRCodeTests.cs`
+- `src/tests/ElBruno.QRCodeGenerator.CLI.Tests/QRCodeOptionsTests.cs`
+- `src/tests/ElBruno.QRCodeGenerator.CLI.Tests/ConsoleRendererTests.cs`
 - Architecture reference: `.squad/decisions/inbox/neo-architecture.md`
 
 **Build Status**: Tests created successfully. Source implementation in progress by Trinity (expected compilation errors until complete).

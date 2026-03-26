@@ -1,11 +1,11 @@
 <Solution>
-  <Folder Name="/samples/">
-    <Project Path="samples/BasicQRCode/BasicQRCode.csproj" />
-  </Folder>
   <Folder Name="/src/">
     <Project Path="src/ElBruno.QRCodeGenerator.CLI/ElBruno.QRCodeGenerator.CLI.csproj" />
-  </Folder>
-  <Folder Name="/tests/">
-    <Project Path="tests/ElBruno.QRCodeGenerator.CLI.Tests/ElBruno.QRCodeGenerator.CLI.Tests.csproj" />
+    <Folder Name="/src/samples/">
+      <Project Path="src/samples/BasicQRCode/BasicQRCode.csproj" />
+    </Folder>
+    <Folder Name="/src/tests/">
+      <Project Path="src/tests/ElBruno.QRCodeGenerator.CLI.Tests/ElBruno.QRCodeGenerator.CLI.Tests.csproj" />
+    </Folder>
   </Folder>
 </Solution>

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "EHTswCAYSCQ=",
+  "dgSpecHash": "bmIhzhPCdLw=",
   "success": true,
-  "projectFilePath": "C:\\src\\ElBruno.QRCodeGenerator.CLI\\src\\ElBruno.QRCodeGenerator.CLI\\ElBruno.QRCodeGenerator.CLI.csproj",
+  "projectFilePath": "C:\\src\\ElBruno.QRCodeGenerator\\src\\ElBruno.QRCodeGenerator.CLI\\ElBruno.QRCodeGenerator.CLI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\bruno\\.nuget\\packages\\qrcoder\\1.6.0\\qrcoder.1.6.0.nupkg.sha512"
   ],

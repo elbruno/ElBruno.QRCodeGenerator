@@ -35,13 +35,13 @@ src/
 ├── ElBruno.QRCodeGenerator.Image/         # Tier 2
 └── (Tool, PDF, ASCII added later)
 
-tests/
+src/tests/
 ├── ElBruno.QRCodeGenerator.CLI.Tests/     # Existing
 ├── ElBruno.QRCodeGenerator.Payloads.Tests/
 ├── ElBruno.QRCodeGenerator.Svg.Tests/
 └── ElBruno.QRCodeGenerator.Image.Tests/
 
-samples/
+src/samples/
 ├── BasicQRCode/                           # Existing
 ├── PayloadsDemo/                          # Tier 1
 ├── SvgQRCodeDemo/                         # Tier 1
@@ -733,8 +733,8 @@ Each package takes the bool[,] matrix and converts to its output:
 ```
 ElBruno.QRCodeGenerator.slnx
 ├── src/ElBruno.QRCodeGenerator.CLI/
-├── tests/ElBruno.QRCodeGenerator.CLI.Tests/
-└── samples/BasicQRCode/
+├── src/tests/ElBruno.QRCodeGenerator.CLI.Tests/
+└── src/samples/BasicQRCode/
 ```
 
 ### After Tier 1
@@ -743,15 +743,15 @@ ElBruno.QRCodeGenerator.slnx
 ├── src/
 │   ├── ElBruno.QRCodeGenerator.CLI/
 │   ├── ElBruno.QRCodeGenerator.Payloads/
-│   └── ElBruno.QRCodeGenerator.Svg/
-├── tests/
-│   ├── ElBruno.QRCodeGenerator.CLI.Tests/
-│   ├── ElBruno.QRCodeGenerator.Payloads.Tests/
-│   └── ElBruno.QRCodeGenerator.Svg.Tests/
-└── samples/
-    ├── BasicQRCode/
-    ├── PayloadsDemo/
-    └── SvgQRCodeDemo/
+│   ├── ElBruno.QRCodeGenerator.Svg/
+│   ├── tests/
+│   │   ├── ElBruno.QRCodeGenerator.CLI.Tests/
+│   │   ├── ElBruno.QRCodeGenerator.Payloads.Tests/
+│   │   └── ElBruno.QRCodeGenerator.Svg.Tests/
+│   └── samples/
+│       ├── BasicQRCode/
+│       ├── PayloadsDemo/
+│       └── SvgQRCodeDemo/
 ```
 
 ### After Tier 2
@@ -762,11 +762,11 @@ ElBruno.QRCodeGenerator.slnx
 │   ├── ElBruno.QRCodeGenerator.Payloads/
 │   ├── ElBruno.QRCodeGenerator.Svg/
 │   ├── ElBruno.QRCodeGenerator.Image/
-│   └── ElBruno.QRCodeGenerator.Tool/
-├── tests/
-│   ├── (4 test projects)
-├── samples/
-    ├── (5 sample projects)
+│   ├── ElBruno.QRCodeGenerator.Tool/
+│   ├── tests/
+│   │   ├── (4 test projects)
+│   └── samples/
+│       └── (5 sample projects)
 ```
 
 ---

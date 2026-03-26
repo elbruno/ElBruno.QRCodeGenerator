@@ -29,7 +29,7 @@
 - `src/ElBruno.QRCodeGenerator.CLI/QRCode.cs` — Public API
 - `src/ElBruno.QRCodeGenerator.CLI/QRCodeOptions.cs` — Configuration
 - `src/ElBruno.QRCodeGenerator.CLI/Internal/ConsoleRenderer.cs` — Rendering engine
-- `samples/BasicQRCode/Program.cs` — Working sample demonstrating usage
+- `src/samples/BasicQRCode/Program.cs` — Working sample demonstrating usage
 
 **Build Targets:** net8.0 and net10.0
 **Dependencies:** QRCoder 1.6.0 (battle-tested QR encoding library)

@@ -207,7 +207,7 @@ This repository includes sample console applications demonstrating various featu
 ### BasicQRCode Sample
 
 ```bash
-cd samples/BasicQRCode
+cd src/samples/BasicQRCode
 dotnet run
 ```
 
@@ -216,7 +216,7 @@ Demonstrates:
 - Custom options configuration
 - Using Generate() and Print() methods
 
-See [samples/BasicQRCode](samples/BasicQRCode) for the complete example.
+See [src/samples/BasicQRCode](src/samples/BasicQRCode) for the complete example.
 
 ## Building from Source
 
@@ -249,11 +249,11 @@ ElBruno.QRCodeGenerator/
 │   │   ├── QRCodeOptions.cs                # Configuration classes
 │   │   └── ElBruno.QRCodeGenerator.CLI.csproj
 │   ├── ElBruno.QRCodeGenerator.Image/      # [Coming soon] Image generation
-│   └── ElBruno.QRCodeGenerator.Core/       # [Coming soon] Shared core
-├── tests/
-│   └── ElBruno.QRCodeGenerator.CLI.Tests/
-├── samples/
-│   └── BasicQRCode/                        # Example applications
+│   ├── ElBruno.QRCodeGenerator.Core/       # [Coming soon] Shared core
+│   ├── tests/
+│   │   └── ElBruno.QRCodeGenerator.CLI.Tests/
+│   └── samples/
+│       └── BasicQRCode/                        # Example applications
 ├── docs/
 │   ├── publishing.md                       # NuGet publishing guide
 │   └── nuget-logo-prompt.md                # NuGet icon design prompts

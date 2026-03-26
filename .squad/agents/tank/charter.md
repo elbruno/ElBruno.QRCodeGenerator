@@ -11,7 +11,7 @@
 
 ## What I Own
 
-- Unit tests (tests/ElBruno.QRCodeGenerator.CLI.Tests/)
+- Unit tests (src/tests/ElBruno.QRCodeGenerator.CLI.Tests/)
 - Test coverage and quality metrics
 - Edge case identification
 - Validation of QR output correctness

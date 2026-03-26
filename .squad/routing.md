@@ -8,7 +8,7 @@ How to decide who handles what.
 |-----------|----------|----------|
 | Architecture & project structure | Neo | Solution layout, csproj config, NuGet packaging, API design |
 | Library implementation | Trinity | QR encoding, console rendering, C# code in src/ |
-| Documentation & samples | Dozer | README, docs/, samples/, publishing guide, changelog |
+| Documentation & samples | Dozer | README, docs/, src/samples/, publishing guide, changelog |
 | Code review | Neo | Review PRs, check quality, suggest improvements |
 | Testing | Tank | Write tests, find edge cases, verify fixes |
 | Scope & priorities | Neo | What to build next, trade-offs, decisions |
