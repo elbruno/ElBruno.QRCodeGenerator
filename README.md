@@ -1,6 +1,7 @@
 # ElBruno.QRCodeGenerator
 
-[![License](https://img.shields.io/github/license/elbruno/ElBruno.QRCodeGenerator)](LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/elbruno/ElBruno.QRCodeGenerator/blob/main/LICENSE)
+[![GitHub](https://img.shields.io/github/stars/elbruno/ElBruno.QRCodeGenerator?style=social)](https://github.com/elbruno/ElBruno.QRCodeGenerator)
 
 ## A family of .NET libraries for QR code generation 🟦
 
@@ -265,7 +266,7 @@ ElBruno.QRCodeGenerator/
 ## Documentation
 
 - [Publishing Guide](docs/publishing.md) - How to publish to NuGet
-- [Changelog](CHANGELOG.md) - Version history and release notes
+- [Changelog](docs/CHANGELOG.md) - Version history and release notes
 
 ## License
 

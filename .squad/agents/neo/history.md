@@ -9,6 +9,35 @@
 
 <!-- Append new learnings below. Each entry is something lasting about the project. -->
 
+### 2026-03-26: Library Expansion Plan Complete
+
+**Implementation Plan Document Created:**
+- File: `docs/implementation-plan.md` — comprehensive, actionable roadmap for 7 packages across 3 tiers
+- **Tier 1 (Payloads, SVG):** Zero external rendering dependencies, pure string output, maximum reusability, ships first
+- **Tier 2 (Image, Tool, ANSI):** Image requires dependency decision (ImageSharp vs SkiaSharp), Tool integrates all renderers, ANSI enhances CLI v1.1 with color support
+- **Tier 3 (PDF, ASCII):** Future if demand exists
+
+**Key Architectural Principles Documented:**
+- All packages reuse QRCoder bool[,] matrix — single source of truth
+- Payloads layer is pure string formatting, never needs rendering
+- SVG uses pure XML generation, zero binary dependencies
+- Image package deferred dependency decision to implementation time
+- Tool unifies CLI, SVG, Image into batch processor with `qrgen` command
+- Core extraction deferred until after Image ships and duplication patterns clear (YAGNI)
+
+**Plan includes per-package:**
+- Exact project structure (file layout, namespaces)
+- Complete public API signatures with examples
+- Dependency specifications
+- Test strategy and coverage targets
+- NuGet metadata templates
+- Build order and integration points
+- Risk mitigation and success metrics
+
+**Impact:** Team can now pick any Tier 1 package and execute independently. Plan is reference-quality for future sessions.
+
+**Next decision:** ImageSharp vs SkiaSharp for Image renderer (deferred to implementation phase).
+
 ### 2026-03-26: Repository Renamed and Core Architecture Decision
 
 **Repository Rename:**
