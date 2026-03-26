@@ -109,3 +109,30 @@ ElBruno.QRCodeGenerator.CLI/
 - Trinity: Implement core QR rendering logic (QRCode.cs, ConsoleRenderer.cs)
 - Tank: Write unit tests for rendering, integration tests
 - Dozer: Expand README with examples, create sample Program.cs
+
+### 2026-03-26: Repository Structure Reorganization
+
+**Structural Change: Moved tests/ and samples/ into src/**
+- Consolidated directory structure with all project content under `src/`
+- New structure: `src/` contains library (`ElBruno.QRCodeGenerator.CLI/`), tests (`tests/`), and samples (`samples/`)
+- Benefits: Cleaner repo root, clearer separation of source code vs documentation/tooling
+- Git history preserved using `git mv` (manual approach due to permission constraints)
+
+**Files Updated:**
+- `ElBruno.QRCodeGenerator.slnx` — Updated project paths and folder structure
+- Project references in `ElBruno.QRCodeGenerator.CLI.Tests.csproj` and `BasicQRCode.csproj` — Fixed relative paths (`../../src/...` → `../../`)
+- Documentation (`README.md`, `docs/implementation-plan.md`) — Updated all path references and structure diagrams
+- All squad files (charters, histories, routing, decisions) — Updated path conventions
+
+**Removed:**
+- `ElBruno.QRCodeGenerator.CLI.slnx` — Removed from git tracking (file was already deleted but still tracked)
+
+**Verification:**
+- ✅ Solution builds successfully (`dotnet build`)
+- ✅ All 35 tests pass (`dotnet test`)
+- ✅ Changes committed with git rename detection (R status)
+- ✅ Pushed to GitHub main branch
+
+**Convention Established:**
+- Future package structure: `src/{PackageName}/`, `src/tests/{PackageName}.Tests/`, `src/samples/{SampleName}/`
+- Repo root reserved for: solution file, README, LICENSE, CHANGELOG, docs/, .squad/, build configuration
