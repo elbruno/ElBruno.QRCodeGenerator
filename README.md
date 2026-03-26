@@ -61,21 +61,78 @@ Console.WriteLine(qrCode);
 
 ## Samples
 
-This repository includes sample console applications demonstrating various features:
+See [src/samples/BasicQRCode](src/samples/BasicQRCode) for the complete CLI example.
 
-### BasicQRCode Sample
+---
+
+## ElBruno.QRCodeGenerator.Payloads
+
+**Fluent payload builders for WiFi, vCard, Email, SMS, Geo, and URL QR codes**
+
+Zero external dependencies — pure string formatting that works with any QR code renderer.
+
+### Installation
 
 ```bash
-cd src/samples/BasicQRCode
-dotnet run
+dotnet add package ElBruno.QRCodeGenerator.Payloads
 ```
 
-Demonstrates:
-- Simple QR code generation
-- Custom options configuration
-- Using Generate() and Print() methods
+### Quick Start
 
-See [src/samples/BasicQRCode](src/samples/BasicQRCode) for the complete example.
+```csharp
+using ElBruno.QRCodeGenerator.Payloads;
+
+// WiFi network QR code
+var wifi = PayloadBuilder.Wifi("MyNetwork", "MyPassword123");
+Console.WriteLine(wifi.GetPayloadString());
+// Output: WIFI:T:WPA;S:MyNetwork;P:MyPassword123;;
+
+// vCard contact
+var vcard = PayloadBuilder.VCard("Bruno Capuano")
+    .WithPhone("+1234567890", VCardPhoneType.Mobile)
+    .WithEmail("bruno@example.com", VCardEmailType.Work)
+    .WithOrganization("Contoso");
+Console.WriteLine(vcard.GetPayloadString());
+
+// Combine with any renderer (e.g., CLI)
+QRCode.Print(wifi.GetPayloadString());
+```
+
+📂 [Full Payloads sample](src/samples/PayloadsDemo) | 📖 [API Reference](docs/api-reference.md)
+
+---
+
+## ElBruno.QRCodeGenerator.Svg
+
+**Generate resolution-independent SVG QR codes**
+
+### Installation
+
+```bash
+dotnet add package ElBruno.QRCodeGenerator.Svg
+```
+
+### Quick Start
+
+```csharp
+using ElBruno.QRCodeGenerator.Svg;
+
+// Generate an SVG QR code
+var svg = SvgQRCode.Generate("https://github.com/elbruno");
+File.WriteAllText("qrcode.svg", svg);
+
+// Custom colors and sizing
+var customSvg = SvgQRCode.Generate("Hello, World!", svgOptions: new SvgOptions
+{
+    ForegroundColor = "#003366",
+    BackgroundColor = "#f0f0f0",
+    ModuleSize = 8
+});
+```
+
+📂 [Full SVG sample](src/samples/SvgQRCodeDemo) | 📖 [API Reference](docs/api-reference.md)
+
+---
 
 ## Building from Source
 
