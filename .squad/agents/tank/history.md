@@ -9,6 +9,23 @@
 
 <!-- Append new learnings below. Each entry is something lasting about the project. -->
 
+### 2026-03-26: Project Restructuring — Folder Reorganization
+
+**Structural Change — All team members aware:**
+- Tests moved from `tests/` → `src/tests/`
+- Samples moved from `samples/` → `src/samples/`
+- Stale ElBruno.QRCodeGenerator.CLI.slnx deleted
+- All references updated (solutions, projects, CI/CD workflows)
+- Build passes, 35 tests green, changes committed
+
+**Impact on Tank's work:**
+- Test suite now resides in `src/tests/`
+- Sample apps in `src/samples/` for reference
+- All test paths updated in project files
+- CI/CD workflows reflect new structure
+
+---
+
 ### 2026-03-26: Initial Test Suite Creation
 
 **Created comprehensive xUnit test suite** for ElBruno.QRCodeGenerator.CLI library:

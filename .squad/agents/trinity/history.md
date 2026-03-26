@@ -9,6 +9,23 @@
 
 <!-- Append new learnings below. Each entry is something lasting about the project. -->
 
+### 2026-03-26: Project Restructuring — Folder Reorganization
+
+**Structural Change — All team members aware:**
+- Tests moved from `tests/` → `src/tests/`
+- Samples moved from `samples/` → `src/samples/`
+- Stale ElBruno.QRCodeGenerator.CLI.slnx deleted
+- All references updated (solutions, projects, CI/CD workflows)
+- Build passes, 35 tests green, changes committed
+
+**Impact on Trinity's work:**
+- Library source still in `src/ElBruno.QRCodeGenerator.CLI/`
+- Tests adjacent in `src/tests/` for easy reference
+- Sample apps in `src/samples/` demonstrate usage patterns
+- All project file references updated
+
+---
+
 ### 2026-03-26: Core Library Implementation
 
 **Architecture:**

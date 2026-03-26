@@ -7,6 +7,22 @@
 
 ## Learnings
 
+### 2026-03-26: Project Restructuring — Folder Reorganization
+
+**Structural Change — All team members aware:**
+- Tests moved from `tests/` → `src/tests/`
+- Samples moved from `samples/` → `src/samples/`
+- Stale ElBruno.QRCodeGenerator.CLI.slnx deleted
+- All references updated (solutions, projects, CI/CD workflows)
+- Build passes, 35 tests green, changes committed
+
+**Impact on Dozer's work:**
+- Sample apps now in `src/samples/` (may reference in documentation)
+- All project paths updated
+- CI/CD workflows stable and validated
+
+---
+
 ### Project Structure Evolution (2026-03-26)
 - Repository renamed from ElBruno.QRCodeGenerator.CLI to ElBruno.QRCodeGenerator (umbrella project)
 - ElBruno.QRCodeGenerator.CLI is now one package within the umbrella
