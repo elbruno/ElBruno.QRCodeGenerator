@@ -30,3 +30,6 @@ Thumbs.db
 .squad-workstream
 src/samples/SvgQRCodeDemo/qrcode.svg
 src/samples/AsciiQRCodeDemo/qrcode.txt
+src/samples/PdfQRCodeDemo/custom_qrcode.pdf
+src/samples/PdfQRCodeDemo/simple_qrcode.pdf
+src/samples/PdfQRCodeDemo/titled_qrcode.pdf
