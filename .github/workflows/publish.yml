@@ -17,21 +17,19 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: |
-            8.0.x
-            10.0.x
+          dotnet-version: 8.0.x
 
       - name: Restore
-        run: dotnet restore ElBruno.QRCodeGenerator.slnx
+        run: dotnet restore ElBruno.QRCodeGenerator.slnx -p:TargetFrameworks=net8.0
 
       - name: Build
-        run: dotnet build ElBruno.QRCodeGenerator.slnx -c Release --no-restore
+        run: dotnet build ElBruno.QRCodeGenerator.slnx -c Release --no-restore -p:TargetFrameworks=net8.0
 
       - name: Test
         run: dotnet test ElBruno.QRCodeGenerator.slnx -c Release --no-build --framework net8.0
 
       - name: Pack
-        run: dotnet pack src/ElBruno.QRCodeGenerator.CLI/ElBruno.QRCodeGenerator.CLI.csproj -c Release --no-build --output ./nupkgs
+        run: dotnet pack src/ElBruno.QRCodeGenerator.CLI/ElBruno.QRCodeGenerator.CLI.csproj -c Release --no-build -p:TargetFrameworks=net8.0 --output ./nupkgs
 
       - name: Push to NuGet
         run: |
