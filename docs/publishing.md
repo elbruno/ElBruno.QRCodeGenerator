@@ -1,6 +1,8 @@
 # Publishing to NuGet
 
-Guide for publishing ElBruno.QRCodeGenerator.CLI to NuGet.
+Guide for publishing ElBruno.QRCodeGenerator packages to NuGet.
+
+This guide focuses on the ElBruno.QRCodeGenerator.CLI package. Future packages (Image, Core) will follow similar workflows.
 
 ## Prerequisites
 
@@ -26,7 +28,7 @@ Update the version following [Semantic Versioning](https://semver.org):
 
 ### Step 2: Update CHANGELOG.md
 
-Add a new section at the top with the version and date:
+Add a new section at the top of the CHANGELOG.md at the repository root with the version and date:
 
 ```markdown
 ## [1.0.1] - 2026-03-27
@@ -71,7 +73,7 @@ The symbol package is automatically pushed along with the main package.
 
 ## GitHub Actions CI/CD
 
-The repository includes GitHub Actions workflows that:
+The ElBruno.QRCodeGenerator repository includes GitHub Actions workflows that:
 - Build and test on every push
 - Publish to NuGet on version tags
 

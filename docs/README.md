@@ -1,10 +1,25 @@
-# ElBruno.QRCodeGenerator.CLI Documentation
+# ElBruno.QRCodeGenerator Documentation
 
 ## Overview
 
-ElBruno.QRCodeGenerator.CLI is a .NET library that generates QR codes optimized for console/terminal display using Unicode block characters.
+ElBruno.QRCodeGenerator is a suite of .NET libraries for generating QR codes in various formats.
 
-## Installation
+### Current Packages
+
+#### ElBruno.QRCodeGenerator.CLI
+
+A .NET library that generates QR codes optimized for console/terminal display using Unicode block characters.
+
+### Coming Soon
+
+- **ElBruno.QRCodeGenerator.Image** - Generate QR codes as PNG/SVG images
+- **ElBruno.QRCodeGenerator.Core** - Shared core functionality
+
+---
+
+## ElBruno.QRCodeGenerator.CLI
+
+### Installation
 
 ```bash
 dotnet add package ElBruno.QRCodeGenerator.CLI

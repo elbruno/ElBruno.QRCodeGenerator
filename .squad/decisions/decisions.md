@@ -1,6 +1,71 @@
-# Decisions — ElBruno.QRCodeGenerator.CLI
+# Decisions — ElBruno.QRCodeGenerator
 
 **Last Updated:** 2026-03-26
+
+## 2026-03-26T12:07:38Z: User Directive
+
+**By:** Bruno Capuano (via Copilot)
+
+Project renamed from ElBruno.QRCodeGenerator.CLI to ElBruno.QRCodeGenerator as an umbrella repository. Main goals:
+- CLI implementation (current)
+- Image generation implementation (planned)
+- Shared Core project (planned)
+
+**Rationale:** User request to support multiple QR code generation formats.
+
+---
+
+## Umbrella Project Structure — Dozer (DevRel)
+
+**Date:** 2026-03-26  
+**Status:** Implemented
+
+Repository renamed to **ElBruno.QRCodeGenerator** containing:
+- **ElBruno.QRCodeGenerator.CLI** (current) — Console QR codes with Unicode blocks
+- **ElBruno.QRCodeGenerator.Image** (planned) — Generate PNG/SVG images
+- **ElBruno.QRCodeGenerator.Core** (planned) — Shared core functionality
+
+**Documentation Changes:**
+- README.md — Added packages table with current/planned packages
+- CHANGELOG.md — Organized by package with umbrella header
+- docs/publishing.md — Updated repo name references
+- docs/README.md — Added umbrella structure context
+- docs/nuget-logo-prompt.md — Created AI image generator prompts
+
+**Key Principles:**
+1. NuGet package name unchanged (ElBruno.QRCodeGenerator.CLI)
+2. Repo name reflects umbrella (github.com/elbruno/ElBruno.QRCodeGenerator)
+3. Keep CLI content intact
+4. Future packages as "coming soon"
+
+**Rationale:** Supports future growth without breaking existing users. Clearer branding, easier discoverability, maintains backward compatibility.
+
+---
+
+## ElBruno.QRCodeGenerator.Core Architecture — Neo (Lead)
+
+**Date:** 2026-03-26  
+**Status:** Recommended
+
+**Question:** Should we create a Core project NOW or wait until Image library is needed?
+
+**Analysis:** Examined current CLI architecture (QRCode.cs, QRCodeOptions.cs, ConsoleRenderer.cs). What's CLI-specific: ConsoleRenderer, Print(), InvertColors, QuietZoneSize (rendering-specific). What could be shared: QRCoder integration, ErrorCorrectionLevel, bool[,] matrix generation.
+
+**Decision: Do NOT create Core now. Wait for the Image library.**
+
+**Rationale:**
+1. **YAGNI**: Premature abstraction risks wrong patterns
+2. **Minimal Duplication**: Shared logic is <20 lines (QRCoder + matrix extraction)
+3. **Options Diverge**: CLI needs (InvertColors, Unicode) vs Image needs (PixelsPerModule, Color, Format) are different
+4. **API Clarity**: Consumers select library they need; Core adds overhead
+5. **Easier Later**: When Image exists, real duplication patterns are visible
+
+**When to Revisit:**
+Create Core when Image library exists AND clear duplication patterns emerge (≥50+ lines identical code).
+
+**Implementation:** Keep repository as ElBruno.QRCodeGenerator, keep package as ElBruno.QRCodeGenerator.CLI, update structural files. When Image is added, create alongside CLI. After both work, evaluate if Core makes sense.
+
+---
 
 ## Project Rename — Coordinator Decision
 

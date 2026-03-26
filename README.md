@@ -1,12 +1,26 @@
-# ElBruno.QRCodeGenerator.CLI
+# ElBruno.QRCodeGenerator
 
-[![NuGet](https://img.shields.io/nuget/v/ElBruno.QRCodeGenerator.CLI)](https://www.nuget.org/packages/ElBruno.QRCodeGenerator.CLI)
-[![Downloads](https://img.shields.io/nuget/dt/ElBruno.QRCodeGenerator.CLI)](https://www.nuget.org/packages/ElBruno.QRCodeGenerator.CLI)
-[![License](https://img.shields.io/github/license/elbruno/ElBruno.QRCodeGenerator.CLI)](LICENSE)
+[![License](https://img.shields.io/github/license/elbruno/ElBruno.QRCodeGenerator)](LICENSE)
 
-## Generate and display QR codes in the console using Unicode block characters 🟦
+## A family of .NET libraries for QR code generation 🟦
 
-ElBruno.QRCodeGenerator.CLI is a lightweight .NET library that creates beautiful QR codes in your terminal with Unicode block characters. Perfect for CLI tools, server logs, and terminal applications.
+ElBruno.QRCodeGenerator is a suite of .NET libraries for generating QR codes in various formats — from console rendering to image generation. Built for developers who need flexible, easy-to-use QR code tools.
+
+## Packages
+
+| Package | NuGet | Downloads | Description |
+|---------|-------|-----------|-------------|
+| **ElBruno.QRCodeGenerator.CLI** | [![NuGet](https://img.shields.io/nuget/v/ElBruno.QRCodeGenerator.CLI)](https://www.nuget.org/packages/ElBruno.QRCodeGenerator.CLI) | [![Downloads](https://img.shields.io/nuget/dt/ElBruno.QRCodeGenerator.CLI)](https://www.nuget.org/packages/ElBruno.QRCodeGenerator.CLI) | Console QR codes with Unicode blocks |
+| **ElBruno.QRCodeGenerator.Image** | _Coming soon_ | | Generate QR codes as PNG/SVG images |
+| **ElBruno.QRCodeGenerator.Core** | _Coming soon_ | | Shared core library |
+
+---
+
+## ElBruno.QRCodeGenerator.CLI
+
+**Generate and display QR codes in the console using Unicode block characters**
+
+The CLI package is a lightweight .NET library that creates beautiful QR codes in your terminal with Unicode block characters. Perfect for CLI tools, server logs, and terminal applications.
 
 ## Features
 
@@ -213,8 +227,8 @@ See [samples/BasicQRCode](samples/BasicQRCode) for the complete example.
 ### Build Steps
 
 ```bash
-git clone https://github.com/elbruno/ElBruno.QRCodeGenerator.CLI.git
-cd ElBruno.QRCodeGenerator.CLI
+git clone https://github.com/elbruno/ElBruno.QRCodeGenerator.git
+cd ElBruno.QRCodeGenerator
 dotnet build
 ```
 
@@ -227,18 +241,21 @@ dotnet test
 ## Project Structure
 
 ```
-ElBruno.QRCodeGenerator.CLI/
+ElBruno.QRCodeGenerator/
 ├── src/
-│   └── ElBruno.QRCodeGenerator.CLI/
-│       ├── QRCode.cs                 # Main API class
-│       ├── QRCodeOptions.cs          # Configuration classes
-│       └── ElBruno.QRCodeGenerator.CLI.csproj
+│   ├── ElBruno.QRCodeGenerator.CLI/        # Console QR code package
+│   │   ├── QRCode.cs                       # Main API class
+│   │   ├── QRCodeOptions.cs                # Configuration classes
+│   │   └── ElBruno.QRCodeGenerator.CLI.csproj
+│   ├── ElBruno.QRCodeGenerator.Image/      # [Coming soon] Image generation
+│   └── ElBruno.QRCodeGenerator.Core/       # [Coming soon] Shared core
 ├── tests/
 │   └── ElBruno.QRCodeGenerator.CLI.Tests/
 ├── samples/
-│   └── BasicQRCode/                  # Example applications
+│   └── BasicQRCode/                        # Example applications
 ├── docs/
-│   └── publishing.md                 # NuGet publishing guide
+│   ├── publishing.md                       # NuGet publishing guide
+│   └── nuget-logo-prompt.md                # NuGet icon design prompts
 ├── README.md
 ├── CHANGELOG.md
 ├── LICENSE

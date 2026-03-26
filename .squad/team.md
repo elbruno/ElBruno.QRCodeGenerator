@@ -1,6 +1,6 @@
 # Squad Team
 
-> ElBruno.QRCodeGenerator.CLI — A .NET library that creates QR codes displayed in the console using console characters. Published to NuGet.
+> ElBruno.QRCodeGenerator — A collection of .NET libraries for QR code generation. Currently includes ElBruno.QRCodeGenerator.CLI for console/terminal rendering. Published to NuGet.
 
 ## Coordinator
 
@@ -22,7 +22,7 @@
 ## Project Context
 
 - **Owner:** Bruno Capuano
-- **Project:** ElBruno.QRCodeGenerator.CLI
+- **Project:** ElBruno.QRCodeGenerator
 - **Stack:** C#, .NET 8/10, xUnit, NuGet, GitHub Actions
 - **Created:** 2026-03-26
 - **Universe:** The Matrix

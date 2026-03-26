@@ -9,6 +9,33 @@
 
 <!-- Append new learnings below. Each entry is something lasting about the project. -->
 
+### 2026-03-26: Repository Renamed and Core Architecture Decision
+
+**Repository Rename:**
+- Repository renamed from `ElBruno.QRCodeGenerator.CLI` to `ElBruno.QRCodeGenerator` to support multiple future packages
+- Created new `ElBruno.QRCodeGenerator.slnx` solution file (old `ElBruno.QRCodeGenerator.CLI.slnx` to be deleted)
+- Updated `Directory.Build.props` RepositoryUrl from `/ElBruno.QRCodeGenerator.CLI` to `/ElBruno.QRCodeGenerator`
+- Updated `.squad/team.md` and all agent charters to reflect new project scope
+- **IMPORTANT**: The CLI NuGet package name remains `ElBruno.QRCodeGenerator.CLI` — only the repo/solution was renamed
+
+**Architecture Decision: No Core Project (Yet)**
+- Analyzed current CLI codebase: QRCode.cs, QRCodeOptions.cs, ConsoleRenderer.cs
+- Current structure: QRCoder library → bool[,] matrix → Unicode block character renderer
+- CLI-specific logic: ConsoleRenderer (▀ ▄ █ characters), Print() method, InvertColors option
+- Potentially shared logic: QRCoder integration (~20 lines), ErrorCorrectionLevel enum
+- **Decision: Do NOT create ElBruno.QRCodeGenerator.Core now** — wait until Image library exists
+- **Rationale**: YAGNI principle, minimal duplication (<20 lines), options will likely diverge, easier to extract after seeing real patterns
+- **When to revisit**: After Image library is implemented and duplication patterns are clear
+
+**Vision for Project:**
+- `ElBruno.QRCodeGenerator.CLI` → Console/terminal QR codes (exists)
+- `ElBruno.QRCodeGenerator.Image` → PNG/SVG QR images (future)
+- `ElBruno.QRCodeGenerator.Core` → Shared logic (only if needed after Image exists)
+
+**Key Files:**
+- Solution: `ElBruno.QRCodeGenerator.slnx` (new)
+- Decision: `.squad/decisions/inbox/neo-core-architecture.md`
+
 ### 2026-03-26: Project Architecture Scaffolded
 
 **Architecture Decisions Made:**

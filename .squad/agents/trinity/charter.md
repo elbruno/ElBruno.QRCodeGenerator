@@ -11,7 +11,7 @@
 
 ## What I Own
 
-- Core QR code generation library code (src/ElBruno.ConsoleQRCode/)
+- Core QR code generation library code (src/ElBruno.QRCodeGenerator.CLI/)
 - QR encoding logic and console character rendering
 - Public API implementation
 - Internal algorithms and data structures

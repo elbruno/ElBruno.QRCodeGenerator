@@ -1,16 +1,25 @@
 # Project Context
 
 - **Owner:** Bruno Capuano
-- **Project:** ElBruno.QRCodeGenerator.CLI — A .NET library that creates QR codes displayed in the console using console characters. Published to NuGet.
+- **Project:** ElBruno.QRCodeGenerator — A suite of .NET libraries for generating QR codes. Currently ships ElBruno.QRCodeGenerator.CLI for console rendering. Published to NuGet.
 - **Stack:** C#, .NET 8/10, xUnit, NuGet, GitHub Actions
 - **Created:** 2026-03-26
 
 ## Learnings
 
+### Project Structure Evolution (2026-03-26)
+- Repository renamed from ElBruno.QRCodeGenerator.CLI to ElBruno.QRCodeGenerator (umbrella project)
+- ElBruno.QRCodeGenerator.CLI is now one package within the umbrella
+- Future packages planned: ElBruno.QRCodeGenerator.Image (images), ElBruno.QRCodeGenerator.Core (shared)
+- NuGet package name stays ElBruno.QRCodeGenerator.CLI (only repo/solution renamed)
+- README now features a "Packages" table showing current + planned packages
+- CHANGELOG.md updated with umbrella project context, organized by package
+
 ### Documentation Architecture
 - README structure follows ElBruno standard: badges → tagline → features → install → quick start → API reference → samples → docs → author
 - NuGet badge URLs use the package ID as-is: `ElBruno.QRCodeGenerator.CLI`
 - Package metadata in .csproj drives NuGet display (Version, Description, Tags, ReadmeFile)
+- Created `docs/nuget-logo-prompt.md` with AI image generator prompts (3 variations: minimal, detailed, playful)
 
 ### API Surface
 - Core API: `QRCode.Generate(text, options)` returns string; `QRCode.Print(text, options)` outputs directly
@@ -27,10 +36,12 @@
 - Keep NuGet publishing guide in `docs/publishing.md`
 - Include version management, API key security, git tagging workflow
 - Reference GitHub Actions for CI/CD automation
+- Updated all references from old repo name to new (ElBruno.QRCodeGenerator)
 
 ### File Organization
 - README.md and LICENSE at repo root (not in docs/)
-- CHANGELOG.md at repo root with dates and version sections
-- docs/ folder contains guides (publishing.md, etc.)
+- CHANGELOG.md at repo root with dates and version sections, organized by package
+- docs/ folder contains guides (publishing.md, nuget-logo-prompt.md, etc.)
 - samples/ contains example applications
+
 
