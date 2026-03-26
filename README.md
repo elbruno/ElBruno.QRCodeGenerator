@@ -12,8 +12,6 @@ ElBruno.QRCodeGenerator is a suite of .NET libraries for generating QR codes in 
 | Package | NuGet | Downloads | Description |
 |---------|-------|-----------|-------------|
 | **ElBruno.QRCodeGenerator.CLI** | [![NuGet](https://img.shields.io/nuget/v/ElBruno.QRCodeGenerator.CLI)](https://www.nuget.org/packages/ElBruno.QRCodeGenerator.CLI) | [![Downloads](https://img.shields.io/nuget/dt/ElBruno.QRCodeGenerator.CLI)](https://www.nuget.org/packages/ElBruno.QRCodeGenerator.CLI) | Console QR codes with Unicode blocks |
-| **ElBruno.QRCodeGenerator.Image** | _Coming soon_ | | Generate QR codes as PNG/SVG images |
-| **ElBruno.QRCodeGenerator.Core** | _Coming soon_ | | Shared core library |
 
 ---
 
@@ -67,139 +65,6 @@ string qrCode = QRCode.Generate("Hello, World!");
 Console.WriteLine(qrCode);
 ```
 
-## API Reference
-
-### QRCode.Generate()
-
-Generates a QR code as a string of Unicode block characters.
-
-```csharp
-/// <summary>
-/// Generates a QR code as a string of Unicode block characters.
-/// The returned string can be printed to console or saved to a file.
-/// </summary>
-/// <param name="text">The text to encode in the QR code. Cannot be null or empty.</param>
-/// <param name="options">Optional configuration for QR generation and rendering.</param>
-/// <returns>A string containing the QR code rendered with Unicode block characters.</returns>
-public static string Generate(string text, QRCodeOptions? options = null)
-```
-
-### QRCode.Print()
-
-Generates and prints a QR code directly to `Console.Out`.
-
-```csharp
-/// <summary>
-/// Generates and prints a QR code directly to Console.Out.
-/// </summary>
-/// <param name="text">The text to encode in the QR code. Cannot be null or empty.</param>
-/// <param name="options">Optional configuration for QR generation and rendering.</param>
-public static void Print(string text, QRCodeOptions? options = null)
-```
-
-### QRCodeOptions
-
-Configuration class for QR code generation and rendering.
-
-```csharp
-public class QRCodeOptions
-{
-    /// <summary>
-    /// Gets or sets the error correction level.
-    /// Default is M (medium, ~15% recovery).
-    /// </summary>
-    public ErrorCorrectionLevel ErrorCorrection { get; set; } = ErrorCorrectionLevel.M;
-
-    /// <summary>
-    /// Gets or sets whether to invert the colors (light background, dark foreground).
-    /// Useful for light-themed terminals. Default is false.
-    /// </summary>
-    public bool InvertColors { get; set; } = false;
-
-    /// <summary>
-    /// Gets or sets the size of the quiet zone (border) around the QR code in modules.
-    /// QR spec recommends at least 4, but 1 works for most scanners. Default is 1.
-    /// </summary>
-    public int QuietZoneSize { get; set; } = 1;
-}
-```
-
-### ErrorCorrectionLevel
-
-Enum for QR code error correction levels.
-
-```csharp
-public enum ErrorCorrectionLevel
-{
-    /// <summary>Low - recovers approximately 7% of data</summary>
-    L = 0,
-
-    /// <summary>Medium - recovers approximately 15% of data (recommended default)</summary>
-    M = 1,
-
-    /// <summary>Quartile - recovers approximately 25% of data</summary>
-    Q = 2,
-
-    /// <summary>High - recovers approximately 30% of data</summary>
-    H = 3
-}
-```
-
-## Configuration
-
-### Dark Terminal (Default)
-
-```csharp
-using ElBruno.QRCodeGenerator.CLI;
-
-var options = new QRCodeOptions
-{
-    ErrorCorrection = ErrorCorrectionLevel.M,
-    QuietZoneSize = 1
-};
-
-QRCode.Print("https://example.com", options);
-```
-
-### Light Terminal
-
-```csharp
-using ElBruno.QRCodeGenerator.CLI;
-
-var options = new QRCodeOptions
-{
-    InvertColors = true,  // Swap light/dark for light backgrounds
-    ErrorCorrection = ErrorCorrectionLevel.H,
-    QuietZoneSize = 2
-};
-
-QRCode.Print("https://example.com", options);
-```
-
-### High Error Correction
-
-```csharp
-using ElBruno.QRCodeGenerator.CLI;
-
-var options = new QRCodeOptions
-{
-    ErrorCorrection = ErrorCorrectionLevel.H  // 30% recovery
-};
-
-QRCode.Print("Important data", options);
-```
-
-## Error Correction Levels
-
-Choose based on your use case:
-
-| Level | Recovery | Best For |
-|-------|----------|----------|
-| **L** | ~7% | Simple URLs, low risk of damage |
-| **M** | ~15% | Default, balanced choice |
-| **Q** | ~25% | Printed codes, high damage risk |
-| **H** | ~30% | Critical data, maximum robustness |
-
 ## Samples
 
 This repository includes sample console applications demonstrating various features:
@@ -220,51 +85,16 @@ See [src/samples/BasicQRCode](src/samples/BasicQRCode) for the complete example.
 
 ## Building from Source
 
-### Prerequisites
-
-- .NET 8.0 SDK or later
-- Git
-
-### Build Steps
-
 ```bash
 git clone https://github.com/elbruno/ElBruno.QRCodeGenerator.git
 cd ElBruno.QRCodeGenerator
 dotnet build
-```
-
-### Running Tests
-
-```bash
 dotnet test
-```
-
-## Project Structure
-
-```
-ElBruno.QRCodeGenerator/
-├── src/
-│   ├── ElBruno.QRCodeGenerator.CLI/        # Console QR code package
-│   │   ├── QRCode.cs                       # Main API class
-│   │   ├── QRCodeOptions.cs                # Configuration classes
-│   │   └── ElBruno.QRCodeGenerator.CLI.csproj
-│   ├── ElBruno.QRCodeGenerator.Image/      # [Coming soon] Image generation
-│   ├── ElBruno.QRCodeGenerator.Core/       # [Coming soon] Shared core
-│   ├── tests/
-│   │   └── ElBruno.QRCodeGenerator.CLI.Tests/
-│   └── samples/
-│       └── BasicQRCode/                        # Example applications
-├── docs/
-│   ├── publishing.md                       # NuGet publishing guide
-│   └── nuget-logo-prompt.md                # NuGet icon design prompts
-├── README.md
-├── CHANGELOG.md
-├── LICENSE
-└── global.json
 ```
 
 ## Documentation
 
+- [API Reference](docs/api-reference.md) - Complete API documentation and configuration examples
 - [Publishing Guide](docs/publishing.md) - How to publish to NuGet
 - [Changelog](docs/CHANGELOG.md) - Version history and release notes
 
