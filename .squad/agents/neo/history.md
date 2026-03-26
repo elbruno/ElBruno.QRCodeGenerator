@@ -163,6 +163,21 @@ ElBruno.QRCodeGenerator.CLI/
 - Future package structure: `src/{PackageName}/`, `src/tests/{PackageName}.Tests/`, `src/samples/{SampleName}/`
 - Repo root reserved for: solution file, README, LICENSE, CHANGELOG, docs/, .squad/, build configuration
 
+### 2026-03-26: Repo Conventions Extracted to Copilot Instructions
+
+**What:** Created `.github/copilot-instructions.md` as a reusable conventions document for all ElBruno .NET NuGet library repos. Covers: repo structure, .slnx solution format, multi-target projects, Directory.Build.props, global.json, .gitignore, CI build workflow, NuGet trusted publishing via OIDC, README format, testing with xUnit, author info.
+
+**Format Decision:** Chose `.github/copilot-instructions.md` as the primary output because it's automatically picked up by GitHub Copilot in any repo — no tooling dependency required. Also created a Squad skill version at `.squad/skills/elbruno-dotnet-repo/SKILL.md` for Squad-aware repos.
+
+**Key Conventions Codified:**
+- Libraries target `net8.0;net10.0`, tests/tools target `net8.0` only
+- CI uses `-p:TargetFrameworks=net8.0` since runners may not have preview SDKs
+- NuGet publishing uses OIDC trusted publishing (`NuGet/login@v1`) — no API key secrets
+- All packable projects include `nuget_logo.png` via `Pack="true" PackagePath=""`
+- README follows strict structure: title → badges → tagline → packages table → per-package sections → author
+
+**Reuse:** Copy `.github/copilot-instructions.md` into any new ElBruno .NET repo. Copilot applies the conventions automatically.
+
 ### 2026-03-27: CI and NuGet Publish Workflows Created
 
 **Problem:** Bruno created a GitHub release (v0.5.0) but nothing happened — no NuGet publish. The `.github/workflows/` folder only had Squad-related workflows, no CI or publish pipelines.
