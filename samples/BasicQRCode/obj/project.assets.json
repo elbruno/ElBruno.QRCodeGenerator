@@ -1,0 +1,128 @@
+{
+  "version": 3,
+  "targets": {
+    "net8.0": {
+      "QRCoder/1.6.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/QRCoder.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/QRCoder.dll": {}
+        }
+      },
+      "ElBruno.QRCodeGenerator.CLI/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "QRCoder": "1.6.0"
+        },
+        "compile": {
+          "bin/placeholder/ElBruno.QRCodeGenerator.CLI.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ElBruno.QRCodeGenerator.CLI.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "QRCoder/1.6.0": {
+      "sha512": "XmPA81eo+oRxBuyVdswsSkTGTE1d3thfF11Z1PdD7oB56A6HU4G4AAOdySmGRMb/cljwlFTMWUtosGEnwpS6GA==",
+      "type": "package",
+      "path": "qrcoder/1.6.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net35/QRCoder.dll",
+        "lib/net40/QRCoder.dll",
+        "lib/net5.0-windows7.0/QRCoder.dll",
+        "lib/net5.0/QRCoder.dll",
+        "lib/net6.0-windows7.0/QRCoder.dll",
+        "lib/net6.0/QRCoder.dll",
+        "lib/netstandard1.3/QRCoder.dll",
+        "lib/netstandard2.0/QRCoder.dll",
+        "nuget-icon.png",
+        "nuget-readme.md",
+        "qrcoder.1.6.0.nupkg.sha512",
+        "qrcoder.nuspec"
+      ]
+    },
+    "ElBruno.QRCodeGenerator.CLI/1.0.0": {
+      "type": "project",
+      "path": "../../src/ElBruno.QRCodeGenerator.CLI/ElBruno.QRCodeGenerator.CLI.csproj",
+      "msbuildProject": "../../src/ElBruno.QRCodeGenerator.CLI/ElBruno.QRCodeGenerator.CLI.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net8.0": [
+      "ElBruno.QRCodeGenerator.CLI >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\bruno\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\src\\ElBruno.QRCodeGenerator.CLI\\samples\\BasicQRCode\\BasicQRCode.csproj",
+      "projectName": "BasicQRCode",
+      "projectPath": "C:\\src\\ElBruno.QRCodeGenerator.CLI\\samples\\BasicQRCode\\BasicQRCode.csproj",
+      "packagesPath": "C:\\Users\\bruno\\.nuget\\packages\\",
+      "outputPath": "C:\\src\\ElBruno.QRCodeGenerator.CLI\\samples\\BasicQRCode\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\bruno\\AppData\\Roaming\\NuGet\\NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net8.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "projectReferences": {
+            "C:\\src\\ElBruno.QRCodeGenerator.CLI\\src\\ElBruno.QRCodeGenerator.CLI\\ElBruno.QRCodeGenerator.CLI.csproj": {
+              "projectPath": "C:\\src\\ElBruno.QRCodeGenerator.CLI\\src\\ElBruno.QRCodeGenerator.CLI\\ElBruno.QRCodeGenerator.CLI.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      },
+      "SdkAnalysisLevel": "10.0.200"
+    },
+    "frameworks": {
+      "net8.0": {
+        "targetAlias": "net8.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
