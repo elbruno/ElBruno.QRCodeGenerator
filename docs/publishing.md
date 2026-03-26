@@ -7,37 +7,44 @@ This guide focuses on the ElBruno.QRCodeGenerator.CLI package. Future packages (
 ## Prerequisites
 
 - .NET SDK (8.0 or later)
-- NuGet account with push permissions
-- API key from https://www.nuget.org/account/api-keys
+- NuGet account with trusted publishing configured
+- GitHub repository environment `release` with `NUGET_USER` secret
 
-## Building the Package
+## How Publishing Works
 
-### Step 1: Update Version
+This project uses **NuGet trusted publishing** via OIDC — no long-lived API keys needed. The GitHub Actions workflow exchanges an OIDC token for a temporary NuGet API key using the `NuGet/login@v1` action.
 
-Edit `src/ElBruno.QRCodeGenerator.CLI/ElBruno.QRCodeGenerator.CLI.csproj`:
+### Setup (one-time)
 
-```xml
-<Version>1.0.1</Version>
-```
+1. **NuGet side:** Configure trusted publishing for your package at https://www.nuget.org — link it to your GitHub repository and the `release` environment.
+2. **GitHub side:** Create a repository environment named `release` in **Settings → Environments**.
+3. **Add the secret:** In the `release` environment, add `NUGET_USER` with your NuGet username.
 
-Update the version following [Semantic Versioning](https://semver.org):
-- `MAJOR.MINOR.PATCH`
-- Increment PATCH for bug fixes
-- Increment MINOR for new backwards-compatible features
-- Increment MAJOR for breaking changes
+## Publishing via GitHub Actions (Recommended)
 
-### Step 2: Update CHANGELOG.md
+### Option 1: Create a Release
 
-Add a new section at the top of the CHANGELOG.md in docs/ with the version and date:
+1. Update the version in `src/ElBruno.QRCodeGenerator.CLI/ElBruno.QRCodeGenerator.CLI.csproj`:
+   ```xml
+   <Version>1.0.1</Version>
+   ```
 
-```markdown
-## [1.0.1] - 2026-03-27
+2. Update `docs/CHANGELOG.md` with the new version.
 
-### Fixed
-- Brief description of the fix
-```
+3. Create a GitHub release with a tag like `v1.0.1`. The workflow automatically:
+   - Extracts the version from the tag
+   - Builds, tests, and packs
+   - Authenticates via OIDC trusted publishing
+   - Pushes to NuGet.org
 
-### Step 3: Build the Package
+### Option 2: Manual Dispatch
+
+1. Go to **Actions → Publish to NuGet → Run workflow**
+2. Optionally enter a version (defaults to the version in the `.csproj`)
+
+## Building Locally
+
+### Step 1: Build the Package
 
 ```bash
 dotnet pack -c Release
@@ -47,51 +54,11 @@ This creates:
 - `src/ElBruno.QRCodeGenerator.CLI/bin/Release/ElBruno.QRCodeGenerator.CLI.1.0.1.nupkg`
 - `src/ElBruno.QRCodeGenerator.CLI/bin/Release/ElBruno.QRCodeGenerator.CLI.1.0.1.snupkg` (symbol package)
 
-The package includes the NuGet icon (`images/nuget_logo.png`), which is automatically configured in the project and included via the `.csproj` file.
-
-## Publishing to NuGet
-
-### Step 1: Get API Key
-
-1. Go to https://www.nuget.org/account/api-keys
-2. Create or copy your API key
-3. Keep this secure — don't commit it to the repository
-
-### Step 2: Push Package
-
-```bash
-dotnet nuget push src/ElBruno.QRCodeGenerator.CLI/bin/Release/ElBruno.QRCodeGenerator.CLI.1.0.1.nupkg \
-  --api-key <YOUR_API_KEY> \
-  --source https://api.nuget.org/v3/index.json
-```
-
-The symbol package is automatically pushed along with the main package.
-
-### Step 3: Verify on NuGet
+### Step 2: Verify on NuGet
 
 1. Go to https://www.nuget.org/packages/ElBruno.QRCodeGenerator.CLI
 2. Verify the new version appears (may take 5-10 minutes to index)
 3. Check that package size, dependencies, and metadata are correct
-
-## GitHub Actions CI/CD
-
-The ElBruno.QRCodeGenerator repository includes GitHub Actions workflows that:
-- Build and test on every push
-- Publish to NuGet on version tags
-
-### Using GitHub Actions to Publish
-
-1. Create a git tag with the version:
-   ```bash
-   git tag v1.0.1
-   git push origin v1.0.1
-   ```
-
-2. Push will trigger the publish workflow (if configured)
-
-3. Monitor the workflow in `.github/workflows/`
-
-**Note:** GitHub Actions requires `NUGET_API_KEY` secret in repository settings.
 
 ## Troubleshooting
 
@@ -102,21 +69,15 @@ If you get an error that the package version already exists:
 - Increment the version number and rebuild
 - NuGet does not allow re-pushing the same version
 
-### Authentication Failed
+### OIDC Authentication Failed
 
-```
-Response status code does not indicate success: 401 (Unauthorized).
-```
+- Ensure the GitHub environment is named exactly `release`
+- Verify `NUGET_USER` secret is set in the `release` environment (not repo-level secrets)
+- Confirm trusted publishing is configured on NuGet.org for this repo
 
-- Verify your API key is correct
-- Ensure your NuGet account has push permissions
-- API keys can expire — get a new one from your account
+### Invalid Version
 
-### Package Validation Warnings
-
-NuGet may warn about:
-- Missing repository URL (add to `.csproj`)
-- Unsigned package (use code signing for production)
+The workflow validates the version from the release tag. Tags must follow `vMAJOR.MINOR.PATCH` format (e.g., `v1.0.1`).
 
 ## Best Practices
 
@@ -124,12 +85,12 @@ NuGet may warn about:
 2. **Update documentation**: Update README and CHANGELOG before publishing
 3. **Tag releases**: Use git tags matching the version (e.g., `v1.0.1`)
 4. **Semantic versioning**: Follow semver for version numbers
-5. **Security**: Never commit API keys; use GitHub Secrets for CI/CD
+5. **Trusted publishing**: No API keys to rotate — OIDC handles auth automatically
 6. **Changelog**: Document all changes for each release
 
 ## Further Reading
 
-- [NuGet Publish Documentation](https://learn.microsoft.com/en-us/nuget/nuget-org/publish-a-package)
+- [NuGet Trusted Publishing](https://devblogs.microsoft.com/nuget/introducing-nuget-trusted-publishing/)
+- [NuGet/login Action](https://github.com/NuGet/login)
 - [Semantic Versioning](https://semver.org)
 - [Keep a Changelog](https://keepachangelog.com)
-- [GitHub Actions Secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets)

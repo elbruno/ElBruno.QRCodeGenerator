@@ -3,13 +3,20 @@ name: Publish to NuGet
 on:
   release:
     types: [published]
-  push:
-    tags:
-      - 'v*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Package version (leave empty to use csproj version)"
+        required: false
+        type: string
 
 jobs:
   publish:
     runs-on: ubuntu-latest
+    environment: release
+    permissions:
+      id-token: write # Required for OIDC token exchange with NuGet
+      contents: read
 
     steps:
       - uses: actions/checkout@v4
@@ -19,25 +26,43 @@ jobs:
         with:
           dotnet-version: 8.0.x
 
+      - name: Determine version
+        id: version
+        run: |
+          if [[ "${{ github.event_name }}" == "release" ]]; then
+            VERSION="${{ github.event.release.tag_name }}"
+            VERSION="${VERSION#v}"   # strip leading v  (v1.0.0 → 1.0.0)
+            VERSION="${VERSION#.}"   # strip stray dot  (.1.0.0 → 1.0.0)
+          elif [[ -n "${{ inputs.version }}" ]]; then
+            VERSION="${{ inputs.version }}"
+          else
+            VERSION=$(grep -oP '<Version>\K[^<]+' src/ElBruno.QRCodeGenerator.CLI/ElBruno.QRCodeGenerator.CLI.csproj)
+          fi
+          if ! [[ "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+ ]]; then
+            echo "❌ Invalid version string: '$VERSION'"
+            exit 1
+          fi
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "📦 Publishing version: $VERSION"
+
       - name: Restore
         run: dotnet restore ElBruno.QRCodeGenerator.slnx -p:TargetFrameworks=net8.0
 
       - name: Build
-        run: dotnet build ElBruno.QRCodeGenerator.slnx -c Release --no-restore -p:TargetFrameworks=net8.0
+        run: dotnet build ElBruno.QRCodeGenerator.slnx -c Release --no-restore -p:TargetFrameworks=net8.0 -p:Version=${{ steps.version.outputs.version }}
 
       - name: Test
         run: dotnet test ElBruno.QRCodeGenerator.slnx -c Release --no-build --framework net8.0
 
       - name: Pack
-        run: dotnet pack src/ElBruno.QRCodeGenerator.CLI/ElBruno.QRCodeGenerator.CLI.csproj -c Release --no-build -p:TargetFrameworks=net8.0 --output ./nupkgs
+        run: dotnet pack src/ElBruno.QRCodeGenerator.CLI/ElBruno.QRCodeGenerator.CLI.csproj -c Release --no-build -p:TargetFrameworks=net8.0 -p:Version=${{ steps.version.outputs.version }} --output ./nupkgs
+
+      - name: NuGet login (OIDC trusted publishing)
+        uses: NuGet/login@v1
+        id: nuget-login
+        with:
+          user: ${{ secrets.NUGET_USER }}
 
       - name: Push to NuGet
-        env:
-          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
         run: |
-          if [ -z "$NUGET_API_KEY" ]; then
-            echo "::error::NUGET_API_KEY secret is not set. Add it in repo Settings → Secrets → Actions."
-            exit 1
-          fi
-          dotnet nuget push "./nupkgs/*.nupkg" --api-key "$NUGET_API_KEY" --source https://api.nuget.org/v3/index.json --skip-duplicate
-          dotnet nuget push "./nupkgs/*.snupkg" --api-key "$NUGET_API_KEY" --source https://api.nuget.org/v3/index.json --skip-duplicate
+          dotnet nuget push "./nupkgs/*.nupkg" --api-key ${{ steps.nuget-login.outputs.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate

@@ -95,7 +95,7 @@ dotnet test
 ## Documentation
 
 - [API Reference](docs/api-reference.md) - Complete API documentation and configuration examples
-- [Publishing Guide](docs/publishing.md) - How to publish to NuGet
+- [Publishing Guide](docs/publishing.md) - How to publish to NuGet (trusted publishing via OIDC)
 - [Changelog](docs/CHANGELOG.md) - Version history and release notes
 
 ## License
