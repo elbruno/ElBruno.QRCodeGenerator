@@ -36,14 +36,6 @@ The CLI package is a lightweight .NET library that creates beautiful QR codes in
 dotnet add package ElBruno.QRCodeGenerator.CLI
 ```
 
-Or add directly to your `.csproj`:
-
-```xml
-<ItemGroup>
-  <PackageReference Include="ElBruno.QRCodeGenerator.CLI" Version="1.0.0" />
-</ItemGroup>
-```
-
 ## Quick Start
 
 ### Print to Console
