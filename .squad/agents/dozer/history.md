@@ -60,4 +60,32 @@
 - docs/ folder contains guides (publishing.md, nuget-logo-prompt.md, etc.)
 - src/samples/ contains example applications
 
+---
+
+### 2026-03-27: README Slim for NuGet Release
+
+**Work Completed:**
+- Reduced README from 288 lines to 118 lines (59% reduction)
+- Removed "coming soon" packages table rows (Image, Core)
+- Removed full API reference section from README body
+- Removed project structure tree
+- Simplified "Building from Source" (removed Prerequisites subheading, consolidated to 4 commands)
+- Kept: Badges, tagline, features, installation, 2 quick-start examples, samples, docs links, author, acknowledgments
+
+**New Documentation:**
+- Created `docs/api-reference.md` (159 lines) with:
+  - Full QRCode.Generate() and QRCode.Print() signatures with docs
+  - QRCodeOptions class with all properties documented
+  - ErrorCorrectionLevel enum with descriptions
+  - Three configuration examples (dark, light, high correction)
+  - Error correction levels table with guidance
+
+**Navigation:**
+- Updated README Documentation section to link `docs/api-reference.md`
+- Maintains path to publishing.md and CHANGELOG.md
+
+**Commit:** Commit 0836845 pushed to main with co-author trailer
+
+**Impact:** README now serves as a clean NuGet landing page; detailed API docs in separate file keeps both documents focused and maintainable.
+
 
