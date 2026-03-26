@@ -29,3 +29,4 @@ Thumbs.db
 # Squad: SubSquad activation file (local to this machine)
 .squad-workstream
 src/samples/SvgQRCodeDemo/qrcode.svg
+src/samples/AsciiQRCodeDemo/qrcode.txt
