@@ -9,6 +9,32 @@
 
 <!-- Append new learnings below. Each entry is something lasting about the project. -->
 
+### 2026-03-26: QRCoder Dependency Analysis — Keep It
+
+**Question:** Could we replace QRCoder with custom QR code generation to go zero-dependency?
+
+**Dependency Surface (Tiny):**
+- 3 QRCoder types used: `QRCodeGenerator`, `QRCodeGenerator.ECCLevel`, `QRCodeData`
+- 1 method call: `CreateQrCode(string, ECCLevel)` → returns `QRCodeData`
+- 1 property read: `QRCodeData.ModuleMatrix` (List of BitArray)
+- 1 exception type caught: `DataTooLongException`
+- Total QRCoder-touching code: ~15 lines in `QRCode.cs`, zero elsewhere
+
+**Replacement Cost (High):**
+- Full QR encoding per ISO 18004 = ~2,000-3,000 LOC minimum for core logic
+- Components: data encoding (4 modes), Reed-Solomon ECC over GF(256), version selection (40 versions × 4 ECC levels), module placement (finder/timing/alignment patterns, format/version info), masking (8 patterns + penalty scoring)
+- Reed-Solomon alone is ~200-400 LOC of non-trivial math (Galois Field arithmetic, polynomial division)
+- Also need: lookup tables for capacity, alignment pattern positions, format strings, version info blocks
+- Testing burden: need conformance tests against spec for all versions/ECC levels
+
+**Recommendation: Do NOT replace QRCoder.**
+- QRCoder is MIT licensed, zero-dependency itself, battle-tested (14M+ downloads), well-maintained
+- Our value is the rendering layer (CLI, SVG, Image), not the encoding
+- Cost/benefit ratio is terrible: 2,000-3,000 LOC of complex math to eliminate 1 well-maintained MIT dependency
+- .NET developers do not generally care about transitive deps the way Node.js devs do
+- Risk: subtle encoding bugs that produce unscannable QR codes — hard to test exhaustively
+- If QRCoder ever became unmaintained, THEN forking/internalizing would make sense (it's MIT, easy to vendor)
+
 ### 2026-03-26: Library Expansion Plan Complete
 
 **Implementation Plan Document Created:**
