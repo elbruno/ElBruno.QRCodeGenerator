@@ -1,17 +1,28 @@
 <Solution>
   <Folder Name="/src/">
+    <Project Path="src/ElBruno.QRCodeGenerator.Ascii/ElBruno.QRCodeGenerator.Ascii.csproj" />
     <Project Path="src/ElBruno.QRCodeGenerator.CLI/ElBruno.QRCodeGenerator.CLI.csproj" />
     <Project Path="src/ElBruno.QRCodeGenerator.Payloads/ElBruno.QRCodeGenerator.Payloads.csproj" />
     <Project Path="src/ElBruno.QRCodeGenerator.Svg/ElBruno.QRCodeGenerator.Svg.csproj" />
+    <Project Path="src/ElBruno.QRCodeGenerator.Pdf/ElBruno.QRCodeGenerator.Pdf.csproj" />
+    <Project Path="src/ElBruno.QRCodeGenerator.Image/ElBruno.QRCodeGenerator.Image.csproj" />
+    <Project Path="src/ElBruno.QRCodeGenerator.Tool/ElBruno.QRCodeGenerator.Tool.csproj" />
     <Folder Name="/src/samples/">
+      <Project Path="src/samples/AsciiQRCodeDemo/AsciiQRCodeDemo.csproj" />
       <Project Path="src/samples/BasicQRCode/BasicQRCode.csproj" />
       <Project Path="src/samples/PayloadsDemo/PayloadsDemo.csproj" />
       <Project Path="src/samples/SvgQRCodeDemo/SvgQRCodeDemo.csproj" />
+      <Project Path="src/samples/PdfQRCodeDemo/PdfQRCodeDemo.csproj" />
+      <Project Path="src/samples/ImageQRCodeDemo/ImageQRCodeDemo.csproj" />
     </Folder>
     <Folder Name="/src/tests/">
+      <Project Path="src/tests/ElBruno.QRCodeGenerator.Ascii.Tests/ElBruno.QRCodeGenerator.Ascii.Tests.csproj" />
       <Project Path="src/tests/ElBruno.QRCodeGenerator.CLI.Tests/ElBruno.QRCodeGenerator.CLI.Tests.csproj" />
       <Project Path="src/tests/ElBruno.QRCodeGenerator.Payloads.Tests/ElBruno.QRCodeGenerator.Payloads.Tests.csproj" />
       <Project Path="src/tests/ElBruno.QRCodeGenerator.Svg.Tests/ElBruno.QRCodeGenerator.Svg.Tests.csproj" />
+      <Project Path="src/tests/ElBruno.QRCodeGenerator.Pdf.Tests/ElBruno.QRCodeGenerator.Pdf.Tests.csproj" />
+      <Project Path="src/tests/ElBruno.QRCodeGenerator.Image.Tests/ElBruno.QRCodeGenerator.Image.Tests.csproj" />
+      <Project Path="src/tests/ElBruno.QRCodeGenerator.Tool.Tests/ElBruno.QRCodeGenerator.Tool.Tests.csproj" />
     </Folder>
   </Folder>
 </Solution>

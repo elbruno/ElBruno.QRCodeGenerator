@@ -5,6 +5,7 @@ namespace ElBruno.QRCodeGenerator.CLI.Internal;
 /// <summary>
 /// Renders QR code module matrix as Unicode block characters for console display.
 /// Uses half-block characters to achieve 2:1 aspect ratio correction.
+/// Supports optional ANSI color output (16-color and 24-bit truecolor).
 /// </summary>
 internal static class ConsoleRenderer
 {
@@ -40,11 +41,18 @@ internal static class ConsoleRenderer
             }
         }
 
+        // Build ANSI color prefix (empty string if no colors configured)
+        string colorPrefix = BuildColorPrefix(options);
+        string colorSuffix = colorPrefix.Length > 0 ? AnsiColorHelper.Reset : string.Empty;
+
         var sb = new StringBuilder();
         
         // Process 2 rows at a time (combining into 1 console line)
         for (int row = 0; row < expandedSize; row += 2)
         {
+            if (colorPrefix.Length > 0)
+                sb.Append(colorPrefix);
+
             for (int col = 0; col < expandedSize; col++)
             {
                 bool topModule = expandedMatrix[row, col];
@@ -68,9 +76,40 @@ internal static class ConsoleRenderer
 
                 sb.Append(ch);
             }
+
+            if (colorSuffix.Length > 0)
+                sb.Append(colorSuffix);
+
             sb.AppendLine();
         }
 
         return sb.ToString();
+    }
+
+    /// <summary>
+    /// Builds the ANSI color prefix string from options.
+    /// TrueColor takes precedence over ConsoleColor when both are set.
+    /// Returns empty string when no color options are configured.
+    /// </summary>
+    private static string BuildColorPrefix(QRCodeOptions options)
+    {
+        var prefix = new StringBuilder();
+
+        if (options.UseTrueColor)
+        {
+            if (options.TrueColorForeground is { } fg)
+                prefix.Append(AnsiColorHelper.GetTrueColorForeground(fg.R, fg.G, fg.B));
+            if (options.TrueColorBackground is { } bg)
+                prefix.Append(AnsiColorHelper.GetTrueColorBackground(bg.R, bg.G, bg.B));
+        }
+        else
+        {
+            if (options.ForegroundColor is { } fg)
+                prefix.Append(AnsiColorHelper.GetForegroundAnsi(fg));
+            if (options.BackgroundColor is { } bg)
+                prefix.Append(AnsiColorHelper.GetBackgroundAnsi(bg));
+        }
+
+        return prefix.ToString();
     }
 }

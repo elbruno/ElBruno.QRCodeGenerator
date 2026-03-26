@@ -2,18 +2,18 @@
 
   <PropertyGroup>
     <TargetFrameworks>net8.0;net10.0</TargetFrameworks>
-    <RootNamespace>ElBruno.QRCodeGenerator.CLI</RootNamespace>
-    <AssemblyName>ElBruno.QRCodeGenerator.CLI</AssemblyName>
+    <RootNamespace>ElBruno.QRCodeGenerator.Image</RootNamespace>
+    <AssemblyName>ElBruno.QRCodeGenerator.Image</AssemblyName>
     
     <!-- NuGet Package Metadata -->
-    <PackageId>ElBruno.QRCodeGenerator.CLI</PackageId>
+    <PackageId>ElBruno.QRCodeGenerator.Image</PackageId>
     <Version>1.0.0</Version>
-    <Title>ElBruno QR Code Generator for Console</Title>
-    <Description>Generate and display QR codes in the console using Unicode block characters. Optimized for terminal output with 2:1 aspect ratio correction. Perfect for CLI tools and terminal applications.</Description>
-    <PackageTags>qrcode;qr;console;cli;terminal;unicode;barcode;generator;display</PackageTags>
-    <PackageProjectUrl>https://github.com/elbruno/ElBruno.QRCodeGenerator.CLI</PackageProjectUrl>
+    <Title>ElBruno QR Code Generator — Image</Title>
+    <Description>Generate QR codes as PNG or JPEG bitmaps using SkiaSharp.</Description>
+    <PackageTags>qrcode;png;jpeg;image;bitmap;skiasharp</PackageTags>
+    <PackageProjectUrl>https://github.com/elbruno/ElBruno.QRCodeGenerator</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageReleaseNotes>Initial release with console QR code generation using Unicode block characters.</PackageReleaseNotes>
+    <PackageReleaseNotes>Initial release with PNG, JPEG, and WebP QR code generation.</PackageReleaseNotes>
     
     <!-- Documentation -->
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -29,11 +29,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <InternalsVisibleTo Include="ElBruno.QRCodeGenerator.CLI.Tests" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="QRCoder" Version="1.6.0" />
+    <PackageReference Include="SkiaSharp" Version="3.116.1" />
   </ItemGroup>
 
   <ItemGroup>

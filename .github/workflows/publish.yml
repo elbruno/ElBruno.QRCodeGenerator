@@ -59,6 +59,10 @@ jobs:
           dotnet pack src/ElBruno.QRCodeGenerator.CLI/ElBruno.QRCodeGenerator.CLI.csproj -c Release --no-build -p:TargetFrameworks=net8.0 -p:Version=${{ steps.version.outputs.version }} --output ./nupkgs
           dotnet pack src/ElBruno.QRCodeGenerator.Payloads/ElBruno.QRCodeGenerator.Payloads.csproj -c Release --no-build -p:TargetFrameworks=net8.0 -p:Version=${{ steps.version.outputs.version }} --output ./nupkgs
           dotnet pack src/ElBruno.QRCodeGenerator.Svg/ElBruno.QRCodeGenerator.Svg.csproj -c Release --no-build -p:TargetFrameworks=net8.0 -p:Version=${{ steps.version.outputs.version }} --output ./nupkgs
+          dotnet pack src/ElBruno.QRCodeGenerator.Image/ElBruno.QRCodeGenerator.Image.csproj -c Release --no-build -p:TargetFrameworks=net8.0 -p:Version=${{ steps.version.outputs.version }} --output ./nupkgs
+          dotnet pack src/ElBruno.QRCodeGenerator.Ascii/ElBruno.QRCodeGenerator.Ascii.csproj -c Release --no-build -p:TargetFrameworks=net8.0 -p:Version=${{ steps.version.outputs.version }} --output ./nupkgs
+          dotnet pack src/ElBruno.QRCodeGenerator.Pdf/ElBruno.QRCodeGenerator.Pdf.csproj -c Release --no-build -p:TargetFrameworks=net8.0 -p:Version=${{ steps.version.outputs.version }} --output ./nupkgs
+          dotnet pack src/ElBruno.QRCodeGenerator.Tool/ElBruno.QRCodeGenerator.Tool.csproj -c Release --no-build -p:Version=${{ steps.version.outputs.version }} --output ./nupkgs
 
       - name: NuGet login (OIDC trusted publishing)
         uses: NuGet/login@v1

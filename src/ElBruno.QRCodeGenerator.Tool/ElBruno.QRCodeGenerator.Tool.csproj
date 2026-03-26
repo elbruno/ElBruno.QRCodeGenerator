@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>qrgen</ToolCommandName>
+    <PackageId>ElBruno.QRCodeGenerator.Tool</PackageId>
+    <Description>Global dotnet tool for command-line QR code generation in console, SVG, PNG, JPEG, ASCII, or PDF formats.</Description>
+    <PackageTags>qrcode;tool;cli;console;svg;png;pdf;ascii</PackageTags>
+    <IsPackable>true</IsPackable>
+    <InternalsVisibleTo>ElBruno.QRCodeGenerator.Tool.Tests</InternalsVisibleTo>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ElBruno.QRCodeGenerator.CLI\ElBruno.QRCodeGenerator.CLI.csproj" />
+    <ProjectReference Include="..\ElBruno.QRCodeGenerator.Svg\ElBruno.QRCodeGenerator.Svg.csproj" />
+    <ProjectReference Include="..\ElBruno.QRCodeGenerator.Image\ElBruno.QRCodeGenerator.Image.csproj" />
+    <ProjectReference Include="..\ElBruno.QRCodeGenerator.Ascii\ElBruno.QRCodeGenerator.Ascii.csproj" />
+    <ProjectReference Include="..\ElBruno.QRCodeGenerator.Pdf\ElBruno.QRCodeGenerator.Pdf.csproj" />
+  </ItemGroup>
+
+</Project>
