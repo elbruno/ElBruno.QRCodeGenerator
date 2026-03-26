@@ -24,4 +24,8 @@
     <ProjectReference Include="..\ElBruno.QRCodeGenerator.Pdf\ElBruno.QRCodeGenerator.Pdf.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)..\..\images\nuget_logo.png" Pack="true" PackagePath="" />
+  </ItemGroup>
+
 </Project>
