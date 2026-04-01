@@ -189,3 +189,27 @@
 **Validation:** Build succeeded (net8.0), all 18 tests green, manual `dotnet run` renders scannable QR in console.
 
 ---
+
+### vCard N: (Structured Name) Field — Issue #1
+
+**Date:** Added for issue #1, requested by Bruno Capuano.
+
+**What was done:**
+- Added `WithName(lastName, firstName, middleName?, prefix?, suffix?)` builder method to `VCardPayload`
+- Emits `N:lastName;firstName;middleName;prefix;suffix` line before `FN:` in vCard output
+- Null/missing optional components default to empty string per vCard 4.0 spec (RFC 6350)
+- Bumped package version from 1.0.0 → 1.1.0
+
+**Key Design Decisions:**
+- `N:` line placed immediately before `FN:` — standard vCard field ordering convention
+- Used nullable tuple `_structuredName` field — `N:` only emitted when `WithName()` is explicitly called, preserving backward compatibility
+- All 5 components always emitted (even if empty) to produce fully compliant `N:` property
+
+**File Paths:**
+- `src/ElBruno.QRCodeGenerator.Payloads/VCardPayload.cs` — WithName() method + GetPayloadString() N: emission
+- `src/ElBruno.QRCodeGenerator.Payloads/ElBruno.QRCodeGenerator.Payloads.csproj` — Version bump to 1.1.0
+
+**Branch:** `squad/1-vcard-name-field`
+**Validation:** Build succeeded (0 errors), commit pushed to origin.
+
+---
