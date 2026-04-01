@@ -7,13 +7,13 @@
     
     <!-- NuGet Package Metadata -->
     <PackageId>ElBruno.QRCodeGenerator.Payloads</PackageId>
-    <Version>1.0.0</Version>
+    <Version>1.1.0</Version>
     <Title>ElBruno QR Code Generator — Payloads</Title>
     <Description>Fluent API builders for structured QR code payloads: WiFi, vCard, Email, SMS, Geographic coordinates, and URLs.</Description>
     <PackageTags>qrcode;payloads;wifi;vcard;sms;geo;email;structured-data</PackageTags>
     <PackageProjectUrl>https://github.com/elbruno/ElBruno.QRCodeGenerator</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageReleaseNotes>Initial release with fluent payload builders for WiFi, vCard, Email, SMS, Geo, and URL.</PackageReleaseNotes>
+    <PackageReleaseNotes>v1.1.0: Added vCard N: (structured name) field support via WithName() builder method. Initial release included fluent payload builders for WiFi, vCard, Email, SMS, Geo, and URL.</PackageReleaseNotes>
     
     <!-- Documentation -->
     <GenerateDocumentationFile>true</GenerateDocumentationFile>

@@ -100,4 +100,79 @@ public class VCardPayloadTests
     {
         Assert.Throws<ArgumentException>(() => new VCardPayload(null!));
     }
+
+    [Fact]
+    public void WithName_AllComponents_ContainsStructuredName()
+    {
+        var payload = new VCardPayload("Dr. John Michael Doe Jr.")
+            .WithName("Doe", "John", "Michael", "Dr.", "Jr.");
+        var result = payload.GetPayloadString();
+
+        Assert.Contains("N:Doe;John;Michael;Dr.;Jr.", result);
+    }
+
+    [Fact]
+    public void WithName_MinimalComponents_EmptyOptionalFields()
+    {
+        var payload = new VCardPayload("John Doe")
+            .WithName("Doe", "John");
+        var result = payload.GetPayloadString();
+
+        Assert.Contains("N:Doe;John;;;", result);
+    }
+
+    [Fact]
+    public void WithName_StructuredNameAppearsBeforeFullName()
+    {
+        var payload = new VCardPayload("John Doe")
+            .WithName("Doe", "John");
+        var result = payload.GetPayloadString();
+
+        var nIndex = result.IndexOf("N:Doe;John;;;");
+        var fnIndex = result.IndexOf("FN:John Doe");
+        Assert.True(nIndex >= 0, "N: line should be present");
+        Assert.True(fnIndex >= 0, "FN: line should be present");
+        Assert.True(nIndex < fnIndex, "N: line should appear before FN: line in vCard output");
+    }
+
+    [Fact]
+    public void NoWithName_OutputDoesNotContainStructuredName()
+    {
+        var payload = new VCardPayload("John Doe")
+            .WithPhone("+1234567890");
+        var result = payload.GetPayloadString();
+
+        Assert.DoesNotContain("\nN:", result);
+    }
+
+    [Fact]
+    public void WithName_PlusAllOtherFields_AllPresent()
+    {
+        var payload = new VCardPayload("John Doe")
+            .WithName("Doe", "John", "Michael", "Mr.", "III")
+            .WithPhone("+1234567890", VCardPhoneType.Mobile)
+            .WithEmail("john@example.com", VCardEmailType.Work)
+            .WithOrganization("Contoso")
+            .WithUrl("https://contoso.com")
+            .WithAddress("1 Corp Way", "Redmond", "WA", "98052", "USA");
+        var result = payload.GetPayloadString();
+
+        Assert.Contains("N:Doe;John;Michael;Mr.;III", result);
+        Assert.Contains("FN:John Doe", result);
+        Assert.Contains("TEL;TYPE=MOBILE:+1234567890", result);
+        Assert.Contains("EMAIL;TYPE=WORK:john@example.com", result);
+        Assert.Contains("ORG:Contoso", result);
+        Assert.Contains("URL:https://contoso.com", result);
+        Assert.Contains("ADR;TYPE=work:;;1 Corp Way;Redmond;WA;98052;USA", result);
+    }
+
+    [Fact]
+    public void WithName_EmptyStringOptionalFields_ProducesEmptySemicolonSeparators()
+    {
+        var payload = new VCardPayload("Jane Smith")
+            .WithName("Smith", "Jane", "", "", "");
+        var result = payload.GetPayloadString();
+
+        Assert.Contains("N:Smith;Jane;;;", result);
+    }
 }
