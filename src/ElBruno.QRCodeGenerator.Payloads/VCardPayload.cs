@@ -13,6 +13,7 @@ public class VCardPayload : IPayload
     private string? _organization;
     private string? _url;
     private (string Street, string City, string State, string Zip, string Country)? _address;
+    private (string LastName, string FirstName, string MiddleName, string Prefix, string Suffix)? _structuredName;
 
     /// <summary>
     /// Creates a new vCard payload.
@@ -54,6 +55,22 @@ public class VCardPayload : IPayload
         return this;
     }
 
+    /// <summary>
+    /// Sets the structured name components (vCard N: property) per vCard 4.0 spec.
+    /// Format: N:lastName;firstName;middleName;prefix;suffix
+    /// </summary>
+    /// <param name="lastName">Family name / surname.</param>
+    /// <param name="firstName">Given name / first name.</param>
+    /// <param name="middleName">Additional / middle name(s). Defaults to empty.</param>
+    /// <param name="prefix">Honorific prefix (e.g. "Dr.", "Mr."). Defaults to empty.</param>
+    /// <param name="suffix">Honorific suffix (e.g. "Jr.", "III"). Defaults to empty.</param>
+    /// <returns>This instance for fluent chaining.</returns>
+    public VCardPayload WithName(string lastName, string firstName, string? middleName = null, string? prefix = null, string? suffix = null)
+    {
+        _structuredName = (lastName, firstName, middleName ?? string.Empty, prefix ?? string.Empty, suffix ?? string.Empty);
+        return this;
+    }
+
     /// <summary>Sets the address.</summary>
     public VCardPayload WithAddress(string street, string city, string state, string zip, string country)
     {
@@ -67,6 +84,13 @@ public class VCardPayload : IPayload
         var sb = new StringBuilder();
         sb.AppendLine("BEGIN:VCARD");
         sb.AppendLine("VERSION:4.0");
+
+        if (_structuredName is not null)
+        {
+            var n = _structuredName.Value;
+            sb.AppendLine($"N:{n.LastName};{n.FirstName};{n.MiddleName};{n.Prefix};{n.Suffix}");
+        }
+
         sb.AppendLine($"FN:{_fullName}");
 
         foreach (var (number, type) in _phones)
