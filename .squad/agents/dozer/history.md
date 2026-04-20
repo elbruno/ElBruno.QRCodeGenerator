@@ -88,4 +88,11 @@
 
 **Impact:** README now serves as a clean NuGet landing page; detailed API docs in separate file keeps both documents focused and maintainable.
 
+---
+
+### 2026-04-20: Author Links Corrected
+
+**Work Completed:** Bruno Capuano's author links in README (Author section, lines 285–289) corrected to use canonical `elbruno` URLs (sourced from ElBruno.LocalLLMs README). All inthelabs references replaced.
+
+**Authority:** User directive (Copilot) + canonical source verification. Applied to decisions.md.
 

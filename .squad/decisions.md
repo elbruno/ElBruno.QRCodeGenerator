@@ -88,6 +88,28 @@
 
 ---
 
+### 2026-04-20: User Directive — Correct Author Links
+
+**Owner:** Bruno Capuano (via Copilot Directive)  
+**Date:** 2026-04-20  
+**Status:** Implemented  
+**Impact:** README.md Author section  
+
+**Directive:** Correct author social links in README Author section (lines 285–289).
+
+**Authority:** Canonical source is ElBruno.LocalLLMs README. Bruno's correct links use `elbruno` everywhere, NOT `inthelabs`.
+
+**Changes Applied:**
+- Blog: `https://elbruno.com` (was `https://inthelabs.com`)
+- YouTube: `https://youtube.com/elbruno` (was `https://youtube.com/@inthelabs`)
+- LinkedIn: `https://linkedin.com/in/elbruno` (was `https://linkedin.com/in/inthelabs`)
+- Twitter: `https://twitter.com/elbruno` (was `https://twitter.com/inthelabs`)
+- Podcast: `https://notienenombre.com` (was `https://inthelabs.dev`)
+
+**Next Steps:** Apply same corrected links to any future README/docs in this project or related ElBruno repositories.
+
+---
+
 ## Governance
 
 - All meaningful changes require team consensus

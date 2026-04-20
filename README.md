@@ -280,13 +280,13 @@ MIT License - see [LICENSE](LICENSE) for details.
 
 ## Author
 
-👤 **Bruno Capuano** (ElBruno)
+👤 **[Bruno Capuano (ElBruno)](https://github.com/elbruno)**
 
-- Blog: https://elbruno.com
-- YouTube: https://youtube.com/@inthelabs
-- LinkedIn: https://linkedin.com/in/inthelabs
-- Twitter: https://twitter.com/inthelabs
-- Podcast: https://inthelabs.dev
+- 📝 **Blog**: [elbruno.com](https://elbruno.com)
+- 📺 **YouTube**: [youtube.com/elbruno](https://youtube.com/elbruno)
+- 🔗 **LinkedIn**: [linkedin.com/in/elbruno](https://linkedin.com/in/elbruno)
+- 𝕏 **Twitter**: [twitter.com/elbruno](https://twitter.com/elbruno)
+- 🎙️ **Podcast**: [notienenombre.com](https://notienenombre.com)
 
 ## Acknowledgments
 
