@@ -151,7 +151,7 @@ This approach provides 2:1 aspect ratio correction, making the QR codes scannabl
 ### Dependencies
 
 - **QRCoder** - QR code encoding engine
-- **.NET 8.0 or .NET 10.0** - Runtime
+- **.NET 8.0, .NET 10.0, or .NET 11.0** - Runtime
 
 ## Best Practices
 

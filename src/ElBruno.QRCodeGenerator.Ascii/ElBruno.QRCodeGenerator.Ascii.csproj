@@ -1,19 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net8.0;net10.0</TargetFrameworks>
+    <TargetFrameworks>net8.0;net10.0;net11.0</TargetFrameworks>
     <RootNamespace>ElBruno.QRCodeGenerator.Ascii</RootNamespace>
     <AssemblyName>ElBruno.QRCodeGenerator.Ascii</AssemblyName>
     
     <!-- NuGet Package Metadata -->
     <PackageId>ElBruno.QRCodeGenerator.Ascii</PackageId>
-    <Version>1.0.0</Version>
+    <Version>1.1.1</Version>
     <Title>ElBruno QR Code Generator — ASCII</Title>
     <Description>Generate QR codes as ASCII art text. Perfect for legacy terminals, text files, and embedded output.</Description>
     <PackageTags>qrcode;ascii;text;art;terminal;console</PackageTags>
     <PackageProjectUrl>https://github.com/elbruno/ElBruno.QRCodeGenerator</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageReleaseNotes>Initial release with ASCII art QR code generation.</PackageReleaseNotes>
+    <PackageReleaseNotes>Added .NET 11.0 support while retaining .NET 8.0 and .NET 10.0.</PackageReleaseNotes>
     
     <!-- Documentation -->
     <GenerateDocumentationFile>true</GenerateDocumentationFile>

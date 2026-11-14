@@ -34,7 +34,7 @@ The CLI package is a lightweight .NET library that creates beautiful QR codes in
 - 🎯 **Simple API** - Generate QR codes with one line of code: `QRCode.Print("your text")`
 - 🖥️ **Console-Optimized** - Uses Unicode block characters for perfect 2:1 aspect ratio in terminals
 - 🎨 **Theme Support** - Built-in light/dark theme support with color inversion
-- 📦 **Multi-Target** - .NET 8.0 and .NET 10.0 support
+- 📦 **Multi-Target** - .NET 8.0, .NET 10.0, and .NET 11.0 support
 - ✅ **Battle-Tested** - Built on [QRCoder](https://github.com/codebude/QRCoder), the most popular .NET QR encoder
 - 🔧 **Configurable** - Adjust error correction, quiet zone, and rendering options
 
@@ -231,6 +231,8 @@ PdfQRCode.Save("https://github.com/elbruno", "styled.pdf", pdfOptions: new PdfOp
 ## ElBruno.QRCodeGenerator.Tool
 
 **`qrgen` — global dotnet tool for all QR code formats**
+
+The tool package includes .NET 8.0 and .NET 11.0 targets, retaining .NET 8 compatibility while supporting .NET 11-only runtime installations.
 
 ### Installation
 

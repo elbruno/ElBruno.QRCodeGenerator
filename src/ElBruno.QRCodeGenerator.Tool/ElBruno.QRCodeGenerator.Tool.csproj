@@ -2,10 +2,12 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFrameworks>net8.0;net11.0</TargetFrameworks>
     <PackAsTool>true</PackAsTool>
     <ToolCommandName>qrgen</ToolCommandName>
     <PackageId>ElBruno.QRCodeGenerator.Tool</PackageId>
+    <Version>1.1.1</Version>
+    <PackageReleaseNotes>Added a .NET 11.0 tool target while retaining .NET 8.0 support.</PackageReleaseNotes>
     <Description>Global dotnet tool for command-line QR code generation in console, SVG, PNG, JPEG, ASCII, or PDF formats.</Description>
     <PackageTags>qrcode;tool;cli;console;svg;png;pdf;ascii</PackageTags>
     <IsPackable>true</IsPackable>

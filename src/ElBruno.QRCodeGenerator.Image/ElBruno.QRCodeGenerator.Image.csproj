@@ -1,19 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net8.0;net10.0</TargetFrameworks>
+    <TargetFrameworks>net8.0;net10.0;net11.0</TargetFrameworks>
     <RootNamespace>ElBruno.QRCodeGenerator.Image</RootNamespace>
     <AssemblyName>ElBruno.QRCodeGenerator.Image</AssemblyName>
     
     <!-- NuGet Package Metadata -->
     <PackageId>ElBruno.QRCodeGenerator.Image</PackageId>
-    <Version>1.0.0</Version>
+    <Version>1.1.1</Version>
     <Title>ElBruno QR Code Generator — Image</Title>
     <Description>Generate QR codes as PNG or JPEG bitmaps using SkiaSharp.</Description>
     <PackageTags>qrcode;png;jpeg;image;bitmap;skiasharp</PackageTags>
     <PackageProjectUrl>https://github.com/elbruno/ElBruno.QRCodeGenerator</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageReleaseNotes>Initial release with PNG, JPEG, and WebP QR code generation.</PackageReleaseNotes>
+    <PackageReleaseNotes>Added .NET 11.0 support and Linux native assets for SkiaSharp while retaining .NET 8.0 and .NET 10.0.</PackageReleaseNotes>
     
     <!-- Documentation -->
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -31,6 +31,7 @@
   <ItemGroup>
     <PackageReference Include="QRCoder" Version="1.6.0" />
     <PackageReference Include="SkiaSharp" Version="3.116.1" />
+    <PackageReference Include="SkiaSharp.NativeAssets.Linux.NoDependencies" Version="3.116.1" />
   </ItemGroup>
 
   <ItemGroup>
