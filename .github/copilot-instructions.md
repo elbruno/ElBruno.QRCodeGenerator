@@ -41,7 +41,7 @@ These instructions define the conventions for ElBruno's .NET NuGet library repos
 ## Project Conventions
 
 ### Library Projects
-- Target `net8.0;net10.0` (multi-target: LTS + latest)
+- Target `net8.0;net10.0;net11.0` (multi-target: supported existing targets plus latest)
 - Package naming: `{Owner}.{ProjectName}.{Feature}` (e.g., `ElBruno.QRCodeGenerator.Svg`)
 - Each packable project must include the NuGet icon:
   ```xml
@@ -59,7 +59,7 @@ These instructions define the conventions for ElBruno's .NET NuGet library repos
 - Set `<IsPackable>false</IsPackable>` and `<IsTestProject>true</IsTestProject>`
 
 ### Tool Projects (dotnet global tools)
-- Target `net8.0` only (single target — CI runners may not have preview SDKs)
+- Target `net8.0` for compatibility and add `net11.0` when the tool must run on .NET 11-only hosts
 - Set `<PackAsTool>true</PackAsTool>` and `<ToolCommandName>{toolname}</ToolCommandName>`
 
 ### Sample Projects
@@ -111,7 +111,7 @@ Use `"rollForward": "latestMajor"` for flexibility across dev machines and CI:
 ```json
 {
   "sdk": {
-    "version": "8.0.0",
+    "version": "11.0.100",
     "rollForward": "latestMajor"
   }
 }
@@ -154,9 +154,9 @@ Thumbs.db
 
 - **Triggers:** push to `main`, PR to `main`
 - **Runner:** `ubuntu-latest`
-- **SDK:** `dotnet-version: 8.0.x`
+- **SDKs:** `dotnet-version: 8.0.x` and `11.0.x`
 - **Commands use solution-level operations** (not per-project)
-- **Use `-p:TargetFrameworks=net8.0`** for restore and build (CI runners may not have preview SDKs)
+- **Do not override `TargetFrameworks`** for restore, build, or pack; build all declared library targets
 - **Use `--framework net8.0`** for test
 
 ```yaml
@@ -176,11 +176,13 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 8.0.x
+          dotnet-version: |
+            8.0.x
+            11.0.x
       - name: Restore
-        run: dotnet restore {ProjectName}.slnx -p:TargetFrameworks=net8.0
+        run: dotnet restore {ProjectName}.slnx
       - name: Build
-        run: dotnet build {ProjectName}.slnx --no-restore -p:TargetFrameworks=net8.0
+        run: dotnet build {ProjectName}.slnx --no-restore
       - name: Test
         run: dotnet test {ProjectName}.slnx --no-build --framework net8.0
 ```
@@ -225,21 +227,23 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 8.0.x
+          dotnet-version: |
+            8.0.x
+            11.0.x
       - name: Determine version
         id: version
         run: |
           # Extract from release tag, input, or csproj
           # Validate: ^[0-9]+\.[0-9]+\.[0-9]+
       - name: Restore
-        run: dotnet restore {Solution}.slnx -p:TargetFrameworks=net8.0
+        run: dotnet restore {Solution}.slnx
       - name: Build
-        run: dotnet build {Solution}.slnx -c Release --no-restore -p:TargetFrameworks=net8.0 -p:Version=${{ steps.version.outputs.version }}
+        run: dotnet build {Solution}.slnx -c Release --no-restore -p:Version=${{ steps.version.outputs.version }}
       - name: Test
         run: dotnet test {Solution}.slnx -c Release --no-build --framework net8.0
       - name: Pack
         run: |
-          dotnet pack src/{Package}/{Package}.csproj -c Release --no-build -p:TargetFrameworks=net8.0 -p:Version=${{ steps.version.outputs.version }} --output ./nupkgs
+          dotnet pack src/{Package}/{Package}.csproj -c Release --no-build -p:Version=${{ steps.version.outputs.version }} --output ./nupkgs
           # Repeat for each packable project
       - name: NuGet login (OIDC trusted publishing)
         uses: NuGet/login@v1

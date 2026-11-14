@@ -9,6 +9,14 @@ on:
         description: "Package version (leave empty to use csproj version)"
         required: false
         type: string
+      package_set:
+        description: "Use all packages only after the PDF and tool dependencies are verified"
+        required: true
+        default: safe
+        type: choice
+        options:
+          - safe
+          - all
 
 jobs:
   publish:
@@ -24,7 +32,9 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 8.0.x
+          dotnet-version: |
+            8.0.x
+            11.0.x
 
       - name: Determine version
         id: version
@@ -46,23 +56,35 @@ jobs:
           echo "📦 Publishing version: $VERSION"
 
       - name: Restore
-        run: dotnet restore ElBruno.QRCodeGenerator.slnx -p:TargetFrameworks=net8.0
+        run: dotnet restore ElBruno.QRCodeGenerator.slnx
 
       - name: Build
-        run: dotnet build ElBruno.QRCodeGenerator.slnx -c Release --no-restore -p:TargetFrameworks=net8.0 -p:Version=${{ steps.version.outputs.version }}
+        run: dotnet build ElBruno.QRCodeGenerator.slnx -c Release --no-restore -p:Version=${{ steps.version.outputs.version }}
 
       - name: Test
         run: dotnet test ElBruno.QRCodeGenerator.slnx -c Release --no-build --framework net8.0
 
       - name: Pack
         run: |
-          dotnet pack src/ElBruno.QRCodeGenerator.CLI/ElBruno.QRCodeGenerator.CLI.csproj -c Release --no-build -p:TargetFrameworks=net8.0 -p:Version=${{ steps.version.outputs.version }} --output ./nupkgs
-          dotnet pack src/ElBruno.QRCodeGenerator.Payloads/ElBruno.QRCodeGenerator.Payloads.csproj -c Release --no-build -p:TargetFrameworks=net8.0 -p:Version=${{ steps.version.outputs.version }} --output ./nupkgs
-          dotnet pack src/ElBruno.QRCodeGenerator.Svg/ElBruno.QRCodeGenerator.Svg.csproj -c Release --no-build -p:TargetFrameworks=net8.0 -p:Version=${{ steps.version.outputs.version }} --output ./nupkgs
-          dotnet pack src/ElBruno.QRCodeGenerator.Image/ElBruno.QRCodeGenerator.Image.csproj -c Release --no-build -p:TargetFrameworks=net8.0 -p:Version=${{ steps.version.outputs.version }} --output ./nupkgs
-          dotnet pack src/ElBruno.QRCodeGenerator.Ascii/ElBruno.QRCodeGenerator.Ascii.csproj -c Release --no-build -p:TargetFrameworks=net8.0 -p:Version=${{ steps.version.outputs.version }} --output ./nupkgs
-          dotnet pack src/ElBruno.QRCodeGenerator.Pdf/ElBruno.QRCodeGenerator.Pdf.csproj -c Release --no-build -p:TargetFrameworks=net8.0 -p:Version=${{ steps.version.outputs.version }} --output ./nupkgs
-          dotnet pack src/ElBruno.QRCodeGenerator.Tool/ElBruno.QRCodeGenerator.Tool.csproj -c Release --no-build -p:Version=${{ steps.version.outputs.version }} --output ./nupkgs
+          package_set="${{ inputs.package_set || 'safe' }}"
+          if [[ "${{ github.event_name }}" == "release" ]]; then
+            package_set="safe"
+          fi
+          case "$package_set" in
+            safe)
+              packages=(CLI Payloads Svg Image Ascii)
+              ;;
+            all)
+              packages=(CLI Payloads Svg Image Ascii Pdf Tool)
+              ;;
+            *)
+              echo "Invalid package set: '$package_set'"
+              exit 1
+              ;;
+          esac
+          for package in "${packages[@]}"; do
+            dotnet pack "src/ElBruno.QRCodeGenerator.$package/ElBruno.QRCodeGenerator.$package.csproj" -c Release --no-build -p:Version=${{ steps.version.outputs.version }} --output ./nupkgs
+          done
 
       - name: NuGet login (OIDC trusted publishing)
         uses: NuGet/login@v1

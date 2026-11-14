@@ -1,6 +1,6 @@
 using System.Globalization;
-using PdfSharpCore.Drawing;
-using PdfSharpCore.Pdf;
+using PdfSharp.Drawing;
+using PdfSharp.Pdf;
 
 namespace ElBruno.QRCodeGenerator.Pdf;
 
@@ -52,6 +52,7 @@ public static class PdfRenderer
         // Draw title if specified
         if (!string.IsNullOrEmpty(options.Title))
         {
+            PdfFontResolver.EnsureInitialized();
             var font = new XFont("Arial", options.TitleFontSize);
             double titleY = qrY - titleOffset;
             gfx.DrawString(

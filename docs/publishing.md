@@ -2,17 +2,19 @@
 
 Guide for publishing ElBruno.QRCodeGenerator packages to NuGet.
 
-This guide focuses on the ElBruno.QRCodeGenerator.CLI package. Future packages (Image, Core) will follow similar workflows.
+This guide covers all packages published from this repository.
 
 ## Prerequisites
 
-- .NET SDK (8.0 or later)
+- .NET SDK 11.0 or later, plus the .NET 8.0 runtime for tests
 - NuGet account with trusted publishing configured
 - GitHub repository environment `release` with `NUGET_USER` secret
 
 ## How Publishing Works
 
 This project uses **NuGet trusted publishing** via OIDC — no long-lived API keys needed. The GitHub Actions workflow exchanges an OIDC token for a temporary NuGet API key using the `NuGet/login@v1` action.
+
+Manual workflow dispatch defaults to the CLI, Payloads, SVG, Image, and Ascii packages. Release events also publish only that safe set. Select `all` for a manual dispatch only after the PDF and Tool dependency remediation has been validated.
 
 ### Setup (one-time)
 
@@ -26,12 +28,12 @@ This project uses **NuGet trusted publishing** via OIDC — no long-lived API ke
 
 1. Update the version in `src/ElBruno.QRCodeGenerator.CLI/ElBruno.QRCodeGenerator.CLI.csproj`:
    ```xml
-   <Version>1.0.1</Version>
+   <Version>1.1.1</Version>
    ```
 
 2. Update `docs/CHANGELOG.md` with the new version.
 
-3. Create a GitHub release with a tag like `v1.0.1`. The workflow automatically:
+3. Create a GitHub release with a tag like `v1.1.1`. The workflow automatically:
    - Extracts the version from the tag
    - Builds, tests, and packs
    - Authenticates via OIDC trusted publishing
@@ -51,8 +53,8 @@ dotnet pack -c Release
 ```
 
 This creates:
-- `src/ElBruno.QRCodeGenerator.CLI/bin/Release/ElBruno.QRCodeGenerator.CLI.1.0.1.nupkg`
-- `src/ElBruno.QRCodeGenerator.CLI/bin/Release/ElBruno.QRCodeGenerator.CLI.1.0.1.snupkg` (symbol package)
+- `src/ElBruno.QRCodeGenerator.CLI/bin/Release/ElBruno.QRCodeGenerator.CLI.1.1.1.nupkg`
+- `src/ElBruno.QRCodeGenerator.CLI/bin/Release/ElBruno.QRCodeGenerator.CLI.1.1.1.snupkg` (symbol package)
 
 ### Step 2: Verify on NuGet
 
@@ -77,13 +79,13 @@ If you get an error that the package version already exists:
 
 ### Invalid Version
 
-The workflow validates the version from the release tag. Tags must follow `vMAJOR.MINOR.PATCH` format (e.g., `v1.0.1`).
+The workflow validates the version from the release tag. Tags must follow `vMAJOR.MINOR.PATCH` format (e.g., `v1.1.1`).
 
 ## Best Practices
 
 1. **Test before publishing**: Run `dotnet test` locally first
 2. **Update documentation**: Update README and CHANGELOG before publishing
-3. **Tag releases**: Use git tags matching the version (e.g., `v1.0.1`)
+3. **Tag releases**: Use git tags matching the version (e.g., `v1.1.1`)
 4. **Semantic versioning**: Follow semver for version numbers
 5. **Trusted publishing**: No API keys to rotate — OIDC handles auth automatically
 6. **Changelog**: Document all changes for each release

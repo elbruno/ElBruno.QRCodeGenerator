@@ -59,7 +59,7 @@ src/samples/
 ### Directory.Build.props Considerations
 - **Shared NuGet metadata:** All packages inherit Author, Company, RepositoryUrl, License, etc.
 - **Package properties:** Keep PackageId and Description unique per package.
-- **SDK version:** Continue targeting net8.0 and net10.0 across all libraries.
+- **SDK version:** Target net8.0, net10.0, and net11.0 across all libraries.
 - **No breaking changes to existing props** — only add new PackageDescription entries if needed.
 
 ---

@@ -16,13 +16,15 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 8.0.x
+          dotnet-version: |
+            8.0.x
+            11.0.x
 
       - name: Restore
-        run: dotnet restore ElBruno.QRCodeGenerator.slnx -p:TargetFrameworks=net8.0
+        run: dotnet restore ElBruno.QRCodeGenerator.slnx
 
       - name: Build
-        run: dotnet build ElBruno.QRCodeGenerator.slnx --no-restore -p:TargetFrameworks=net8.0
+        run: dotnet build ElBruno.QRCodeGenerator.slnx --no-restore
 
       - name: Test
         run: dotnet test ElBruno.QRCodeGenerator.slnx --no-build --framework net8.0
