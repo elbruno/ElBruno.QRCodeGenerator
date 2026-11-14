@@ -13,7 +13,7 @@
     <PackageTags>qrcode;png;jpeg;image;bitmap;skiasharp</PackageTags>
     <PackageProjectUrl>https://github.com/elbruno/ElBruno.QRCodeGenerator</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageReleaseNotes>Added .NET 11.0 support while retaining .NET 8.0 and .NET 10.0.</PackageReleaseNotes>
+    <PackageReleaseNotes>Added .NET 11.0 support and Linux native assets for SkiaSharp while retaining .NET 8.0 and .NET 10.0.</PackageReleaseNotes>
     
     <!-- Documentation -->
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -31,6 +31,7 @@
   <ItemGroup>
     <PackageReference Include="QRCoder" Version="1.6.0" />
     <PackageReference Include="SkiaSharp" Version="3.116.1" />
+    <PackageReference Include="SkiaSharp.NativeAssets.Linux.NoDependencies" Version="3.116.1" />
   </ItemGroup>
 
   <ItemGroup>

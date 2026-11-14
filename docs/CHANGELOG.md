@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added .NET 11.0 support to the `qrgen` global tool while retaining its .NET 8.0 target.
 - Replaced the PDF package's vulnerable PdfSharpCore/ImageSharp dependency graph with PDFsharp and the patched `System.Security.Cryptography.Pkcs` 8.0.2.
 - Bundled an Arial-metric-compatible Liberation Sans font under the SIL Open Font License for portable PDF title rendering.
+- Included SkiaSharp Linux native assets so the Image package and tool can render PNG/JPEG on Linux.
 
 ---
 
