@@ -9,14 +9,6 @@ on:
         description: "Package version (leave empty to use csproj version)"
         required: false
         type: string
-      package_set:
-        description: "Use all packages only after the PDF and tool dependencies are verified"
-        required: true
-        default: safe
-        type: choice
-        options:
-          - safe
-          - all
 
 jobs:
   publish:
@@ -66,22 +58,7 @@ jobs:
 
       - name: Pack
         run: |
-          package_set="${{ inputs.package_set || 'safe' }}"
-          if [[ "${{ github.event_name }}" == "release" ]]; then
-            package_set="safe"
-          fi
-          case "$package_set" in
-            safe)
-              packages=(CLI Payloads Svg Image Ascii)
-              ;;
-            all)
-              packages=(CLI Payloads Svg Image Ascii Pdf Tool)
-              ;;
-            *)
-              echo "Invalid package set: '$package_set'"
-              exit 1
-              ;;
-          esac
+          packages=(CLI Payloads Svg Image Ascii Pdf Tool)
           for package in "${packages[@]}"; do
             dotnet pack "src/ElBruno.QRCodeGenerator.$package/ElBruno.QRCodeGenerator.$package.csproj" -c Release --no-build -p:Version=${{ steps.version.outputs.version }} --output ./nupkgs
           done
